@@ -1,0 +1,214 @@
+{
+  "main": {
+    "id": "031d5a685fd857b8",
+    "type": "split",
+    "children": [
+      {
+        "id": "c7ca9d9e1bfc75c2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "72538caf1a7e8fc3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Accurate predictions on small data with a tabular foundation model"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "10e883f47100636d",
+    "type": "split",
+    "children": [
+      {
+        "id": "c34021ff17ae110c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "12945aa7a011b053",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "25944e7d90026b1e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "91bb2669859dd01a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "03ab3ed2f1544323",
+    "type": "split",
+    "children": [
+      {
+        "id": "5efdd3ef381f6189",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "745586bad3d1cc83",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Accurate predictions on small data with a tabular foundation modelへのバックリンク"
+            }
+          },
+          {
+            "id": "9aa20f1a2343ce84",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Accurate predictions on small data with a tabular foundation modelからのアウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "40e72aae2fa1e901",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "2dc497899275c393",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          },
+          {
+            "id": "26beb3ca2afc70c9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Accurate predictions on small data with a tabular foundation modelのアウトライン"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "bases:新規ベースを作成": false
+    }
+  },
+  "active": "72538caf1a7e8fc3",
+  "lastOpenFiles": [
+    "wiki/concepts/gaussian-process.md",
+    "wiki/concepts/in-context-learning.md.tmp.93696.2b68a5966d26",
+    "wiki/sources/2022-tabpfn.md",
+    "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
+    "wiki/sources/2021-transformers-can-do-bayesian-inference.md",
+    "wiki/translations/2021-transformers-can-do-bayesian-inference.md",
+    "raw/assets/2022-tabpfn/fig5_1.svg",
+    "raw/articles/TabPFN_ A Transformer That Solves Small Tabular Classification Problems in a Second.md",
+    "wiki/translations/2022-tabpfn.md.tmp.93696.07e15a42dd55",
+    "wiki/translations/2022-tabpfn.md.tmp.93696.ec8be77de25b",
+    "raw/assets/2022-tabpfn/fig10.svg",
+    "raw/assets/2022-tabpfn/fig9_3.svg",
+    "raw/assets/2022-tabpfn/fig9_2.svg",
+    "raw/assets/2022-tabpfn/fig9_1.svg",
+    "raw/assets/2022-tabpfn/fig7_4.svg",
+    "raw/assets/2022-tabpfn/fig7_3.svg",
+    "raw/assets/2022-tabpfn/fig7_2.svg",
+    "raw/assets/2022-tabpfn/fig7_1.svg",
+    "raw/assets/2022-tabpfn/fig6.svg",
+    "raw/assets/2022-tabpfn",
+    "wiki/translations/2022-tabpfn.md",
+    "wiki/concepts/structural-causal-model.md",
+    "wiki/concepts/bayesian-inference.md",
+    "wiki/concepts/in-context-learning.md",
+    "wiki/concepts/prior-data-fitted-networks.md"
+  ]
+}

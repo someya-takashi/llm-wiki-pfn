@@ -1,0 +1,70 @@
+---
+type: concept
+aliases: [PFN, PFNs, Prior-Data Fitted Network, Prior-Data Fitted Networks, prior-fitted network]
+tags: [meta-learning, bayesian-inference, in-context-learning, amortized-inference]
+related: [[in-context-learning]], [[bayesian-inference]], [[structural-causal-model]]
+sources: [[sources/2021-transformers-can-do-bayesian-inference]], [[sources/2022-tabpfn]]
+updated: 2026-05-30
+---
+
+# Prior-Data Fitted Networks（PFN）
+
+> このリポジトリの中心概念。個別手法（TabPFN など）はページを分けず、ここに「代表手法」としてまとめる。
+
+## 一言で
+
+**Prior-Data Fitted Network（PFN, 事前分布から人工生成した合成データセットで一度だけ訓練しておき、推論時には重み更新なしに 1 回の順伝播でベイズ推論を近似するニューラルネットワーク）**。ふつうの機械学習が「新しいデータが来たらモデルをそのデータに当てはめる（fit）」のに対し、PFN は **当てはめ・予測アルゴリズムそのものを事前に学習** してしまう。新しいデータセットは「入力」として丸ごと与えるだけで、追加学習なしに予測が返る。
+
+## 何を解こうとしているか — 近似対象は PPD
+
+PFN が近似するのは **事後予測分布（PPD; Posterior Predictive Distribution）**。ベイズの教師あり学習では、テスト点 $x$ のラベル分布は「あり得るデータ生成メカニズム（仮説）$\phi$ 全体」について積分した量になる:
+
+$$
+p(y\mid x, D)\propto\int_{\Phi}p(y\mid x,\phi)\,p(D\mid\phi)\,p(\phi)\,d\phi.
+$$
+
+各仮説はその事前確率 $p(\phi)$ と、観測データに対する尤度 $p(D\mid\phi)$ で重み付けされる。この積分はふつう解析的に解けず、計算困難。詳細は [[bayesian-inference]]。
+
+## どう近似するか — 合成データでの事前当てはめ（prior-fitting）
+
+仕組みは驚くほど単純:
+
+1. **事前分布を「データセット生成器」として用意する**。$\phi\sim p(\phi)$ で生成メカニズムを引き、$D\sim p(D\mid\phi)$ で合成データセットを作る。
+2. 合成データセットの一部を訓練、残りをテストとし、「訓練部分を見てテスト部分のラベルを当てる」**交差エントロピー損失**で Transformer を訓練する。
+3. これを膨大な数の合成データセットで繰り返す。
+
+理論的に、この損失の最小化が**真の PPD を近似する**ことが示されている（[[sources/2021-transformers-can-do-bayesian-inference]] の洞察1・系1.1。Prior-Data NLL = PPD との交差エントロピー ＝ 加法定数を除き KL ダイバージェンスの期待値）。したがって訓練済み PFN の 1 回の順伝播 ≒ 近似ベイズ推論になる。重要なのは、この事前当てはめは**事前分布ごとに一度だけ**行えばよい点（アルゴリズム開発時の一括コスト）。なお、PFN は過適合の概念を持たない——訓練損失の改善は常に「厳密な事後分布への近さ」の改善を意味する。
+
+## アーキテクチャ上の特徴
+
+- データセットを **集合（set）** として入力する。各 (特徴量, ラベル) ペアを 1 トークンにし、トークン同士がアテンションで注意を向け合う。サンプルの順序に依存しない（順序不変, permutation invariant）。
+- テスト点は訓練点に注意を向け、テスト集合全体の予測を **1 回の順伝播で同時に** 出す。勾配ベースの学習を推論時に一切行わない（ガウス過程の予測に近い構図）。
+- この「重み更新なしに文脈から学ぶ」挙動は、大規模言語モデルで観測される [[in-context-learning]]（文脈内学習）と同じ枠組みであり、PFN はそれを **設計された事前分布のもとで意図的に行う** 点が特徴。
+
+<figure>
+
+![](../../raw/assets/2022-tabpfn/fig1b.svg)
+
+<figcaption>図（再掲）: PFN のアテンション構造。各 (特徴量, ラベル) を 1 トークンにし、訓練サンプル同士は互いに注意を向け合い、テストサンプルは訓練サンプルにのみ注意を向ける（集合として順序不変に扱う）。［[[sources/2022-tabpfn]] 図1(b) より］</figcaption>
+</figure>
+
+## なぜ強力か — 事前分布を「設計」できる
+
+通常の NN や GBDT では帰納バイアス（モデルの前提・選好）が「効率的に実装できる形」（$L_2$ 正則化、ドロップアウト、木の深さ制限など）に縛られる。PFN では **サンプリングできる事前分布を書くだけ** で任意の帰納バイアスを注入できる。これは学習アルゴリズムの設計方法を根本的に変える。さらにハイパーパラメータを点ではなく**分布**で与えれば、PPD がその空間まで積分してくれるので、ユーザ側のチューニングが要らなくなる。
+
+## 代表手法
+
+- **Transformers Can Do Bayesian Inference**（Müller et al. 2021 → [[sources/2021-transformers-can-do-bayesian-inference]]）: PFN の枠組みと理論を最初に提示した**原典**。損失最小化が PPD 近似に一致することを証明し（洞察1・定理）、固定 GP をほぼ完璧に模倣、扱いにくい GP/BNN でも MCMC/SVI より 200〜10000 倍速い近似を達成。回帰用の予測ヘッド「リーマン分布」も導入。表形式分類では既に XGBoost 等を上回った（[[sources/2022-tabpfn]] の前身）。
+- **TabPFN**（Hollmann et al. 2022 → [[sources/2022-tabpfn]]）: 上記を表形式データ向けに特化・大規模化。[[structural-causal-model]] と BNN の混合を事前分布にし、小規模表データで GBDT を上回り 1 時間級 AutoML に 1 秒未満で並ぶ。PFN を実用レベルに引き上げた代表例。
+
+## 限界
+
+- アテンションが入力サンプル数に対して二次（$O(n^2)$）のため、素朴には大規模データに弱い（線形アテンション系の導入が課題）。
+- 性能は**事前分布の設計**に決定的に依存する。事前分布が想定しない状況（TabPFN なら無情報特徴量・カテゴリ・欠損）では劣化する。
+
+## 関連ページ
+
+- [[in-context-learning]] — PFN の推論挙動の一般枠組み
+- [[bayesian-inference]] — 近似対象（PPD）の理論的背景
+- [[structural-causal-model]] — TabPFN の事前分布の中核
+- [[sources/2022-tabpfn]] — TabPFN 論文
