@@ -1,7 +1,7 @@
 ---
 type: translation
 source_path: raw/papers/TRANSFORMERS CAN DO BAYESIAN INFERENCE.pdf
-source_page: [[sources/2021-transformers-can-do-bayesian-inference]]
+source_page: "[[sources/2021-transformers-can-do-bayesian-inference]]"
 original_language: en
 translated_to: ja
 translated_at: 2026-05-30

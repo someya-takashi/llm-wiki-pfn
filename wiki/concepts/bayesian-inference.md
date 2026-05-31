@@ -2,8 +2,12 @@
 type: concept
 aliases: [Bayesian Inference, PPD, Posterior Predictive Distribution, 事後予測分布, ベイズ推論, amortized inference]
 tags: [probabilistic-modeling, amortized-inference]
-related: [[prior-data-fitted-networks]], [[in-context-learning]]
-sources: [[sources/2021-transformers-can-do-bayesian-inference]], [[sources/2022-tabpfn]]
+related:
+  - "[[prior-data-fitted-networks]]"
+  - "[[in-context-learning]]"
+sources:
+  - "[[sources/2021-transformers-can-do-bayesian-inference]]"
+  - "[[sources/2022-tabpfn]]"
 updated: 2026-05-30
 ---
 

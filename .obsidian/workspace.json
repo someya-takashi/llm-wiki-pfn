@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
-                "mode": "source",
+                "file": "wiki/questions/pfn-paper-and-gaussian-process.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Accurate predictions on small data with a tabular foundation model"
+              "title": "pfn-paper-and-gaussian-process"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
+                "file": "wiki/questions/pfn-paper-and-gaussian-process.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Accurate predictions on small data with a tabular foundation modelへのバックリンク"
+              "title": "pfn-paper-and-gaussian-processへのバックリンク"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
+                "file": "wiki/questions/pfn-paper-and-gaussian-process.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Accurate predictions on small data with a tabular foundation modelからのアウトゴーイングリンク"
+              "title": "pfn-paper-and-gaussian-processからのアウトゴーイングリンク"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
+                "file": "wiki/questions/pfn-paper-and-gaussian-process.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Accurate predictions on small data with a tabular foundation modelのアウトライン"
+              "title": "pfn-paper-and-gaussian-processのアウトライン"
             }
           }
         ]
@@ -185,30 +185,51 @@
   },
   "active": "72538caf1a7e8fc3",
   "lastOpenFiles": [
-    "wiki/concepts/gaussian-process.md",
-    "wiki/concepts/in-context-learning.md.tmp.93696.2b68a5966d26",
-    "wiki/sources/2022-tabpfn.md",
-    "raw/articles/Accurate predictions on small data with a tabular foundation model.md",
-    "wiki/sources/2021-transformers-can-do-bayesian-inference.md",
     "wiki/translations/2021-transformers-can-do-bayesian-inference.md",
-    "raw/assets/2022-tabpfn/fig5_1.svg",
-    "raw/articles/TabPFN_ A Transformer That Solves Small Tabular Classification Problems in a Second.md",
-    "wiki/translations/2022-tabpfn.md.tmp.93696.07e15a42dd55",
-    "wiki/translations/2022-tabpfn.md.tmp.93696.ec8be77de25b",
-    "raw/assets/2022-tabpfn/fig10.svg",
-    "raw/assets/2022-tabpfn/fig9_3.svg",
-    "raw/assets/2022-tabpfn/fig9_2.svg",
-    "raw/assets/2022-tabpfn/fig9_1.svg",
-    "raw/assets/2022-tabpfn/fig7_4.svg",
-    "raw/assets/2022-tabpfn/fig7_3.svg",
-    "raw/assets/2022-tabpfn/fig7_2.svg",
-    "raw/assets/2022-tabpfn/fig7_1.svg",
-    "raw/assets/2022-tabpfn/fig6.svg",
-    "raw/assets/2022-tabpfn",
-    "wiki/translations/2022-tabpfn.md",
-    "wiki/concepts/structural-causal-model.md",
+    "raw/assets/pfn-paper-and-gaussian-process/fig-pfn-gp-pipeline.png",
+    "raw/assets/pfn-paper-and-gaussian-process",
+    "wiki/index.md",
+    "wiki/questions/pfn-paper-and-gaussian-process.md",
+    "wiki/questions/gaussian-process-intuitive-explainer.md",
+    "raw/assets/gaussian-process-intuitive-explainer/f6-cholesky-sampling.png",
+    "wiki/translations/2022-gpr-part2-concrete.md",
+    "raw/assets/gaussian-process-intuitive-explainer/f5-uncertainty.png",
+    "raw/assets/gaussian-process-intuitive-explainer/f4-prior-to-posterior.png",
+    "raw/assets/gaussian-process-intuitive-explainer/f3-lengthscale.png",
+    "raw/assets/gaussian-process-intuitive-explainer/f2-prior-samples.png",
+    "raw/assets/gaussian-process-intuitive-explainer/f1-many-curves.png",
+    "raw/assets/gaussian-process-intuitive-explainer",
+    "wiki/translations/2022-gpr-part1-basics.md",
+    "wiki/sources/2025-gp-intuitive-intro.md",
+    "wiki/translations/2025-gp-intuitive-intro.md",
+    "wiki/concepts/gaussian-process.md",
+    "raw/assets/2025-gp-intuitive-intro/gp_random_sampling.gif",
+    "raw/assets/2025-gp-intuitive-intro/gp_nvda.gif",
+    "raw/assets/2025-gp-intuitive-intro/gp_most_uncertain_sampling.gif",
+    "raw/assets/2025-gp-intuitive-intro",
+    "wiki/translations/2019-gp-not-for-dummies.md",
+    "wiki/sources/2022-gpr-part2-concrete.md",
+    "raw/articles/An Intuitive Introduction to Gaussian Processes.md",
+    "raw/assets/2022-gpr-part2-concrete",
+    "wiki/sources/2022-gpr-part1-basics.md",
+    "raw/assets/2022-gpr-part1-basics",
+    "raw/articles/Introduction to Gaussian process regression, Part 2_ Application to predicting concrete strength.md",
+    "raw/articles/Introduction to Gaussian process regression, Part 1_ The basics.md",
+    "wiki/translations/2020-gp-regression-tutorial.md",
+    "wiki/sources/2019-gp-not-for-dummies.md",
+    "raw/assets/2019-gp-not-for-dummies",
+    "wiki/sources/2021-gp-models-intro.md",
+    "wiki/translations/2021-gp-models-intro.md",
+    "raw/assets/2021-gp-models-intro",
+    "raw/articles/Gaussian Processes, not quite for dummies.md",
+    "raw/articles/An Introduction to Gaussian Process Models.md",
+    "wiki/sources/2020-gp-regression-tutorial.md",
     "wiki/concepts/bayesian-inference.md",
-    "wiki/concepts/in-context-learning.md",
-    "wiki/concepts/prior-data-fitted-networks.md"
+    "wiki/concepts/bayesian-optimization.md",
+    "wiki/sources/2018-bayesian-optimization-tutorial.md",
+    "wiki/translations/2018-bayesian-optimization-tutorial.md",
+    "raw/assets/2018-bayesian-optimization-tutorial",
+    "raw/assets/2020-gp-regression-tutorial",
+    "raw/assets/2025-real-tabpfn"
   ]
 }

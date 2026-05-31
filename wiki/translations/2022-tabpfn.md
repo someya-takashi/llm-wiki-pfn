@@ -1,7 +1,7 @@
 ---
 type: translation
 source_path: raw/articles/TabPFN_ A Transformer That Solves Small Tabular Classification Problems in a Second.md
-source_page: [[sources/2022-tabpfn]]
+source_page: "[[sources/2022-tabpfn]]"
 original_language: en
 translated_to: ja
 translated_at: 2026-05-30

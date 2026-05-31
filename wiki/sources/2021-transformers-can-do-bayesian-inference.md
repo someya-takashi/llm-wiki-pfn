@@ -8,7 +8,7 @@ year: 2021
 venue: ICLR 2022
 ingested: 2026-05-30
 tags: [pfn, bayesian-inference, in-context-learning, gaussian-process, bayesian-neural-network, riemann-distribution]
-translation: [[translations/2021-transformers-can-do-bayesian-inference]]
+translation: "[[translations/2021-transformers-can-do-bayesian-inference]]"
 ---
 
 # Transformers Can Do Bayesian Inference（PFN の原典）

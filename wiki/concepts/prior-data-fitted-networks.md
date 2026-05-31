@@ -2,8 +2,20 @@
 type: concept
 aliases: [PFN, PFNs, Prior-Data Fitted Network, Prior-Data Fitted Networks, prior-fitted network]
 tags: [meta-learning, bayesian-inference, in-context-learning, amortized-inference]
-related: [[in-context-learning]], [[bayesian-inference]], [[structural-causal-model]]
-sources: [[sources/2021-transformers-can-do-bayesian-inference]], [[sources/2022-tabpfn]]
+related:
+  - "[[in-context-learning]]"
+  - "[[bayesian-inference]]"
+  - "[[structural-causal-model]]"
+  - "[[tabular-foundation-model]]"
+sources:
+  - "[[sources/2021-transformers-can-do-bayesian-inference]]"
+  - "[[sources/2022-tabpfn]]"
+  - "[[sources/2025-tabpfn-v2]]"
+  - "[[sources/2025-tabpfn-2-5]]"
+  - "[[sources/2026-tabpfn-3]]"
+  - "[[sources/2025-tabicl]]"
+  - "[[sources/2026-tabicl-v2]]"
+  - "[[sources/2025-real-tabpfn]]"
 updated: 2026-05-30
 ---
 
@@ -55,7 +67,11 @@ $$
 ## 代表手法
 
 - **Transformers Can Do Bayesian Inference**（Müller et al. 2021 → [[sources/2021-transformers-can-do-bayesian-inference]]）: PFN の枠組みと理論を最初に提示した**原典**。損失最小化が PPD 近似に一致することを証明し（洞察1・定理）、固定 GP をほぼ完璧に模倣、扱いにくい GP/BNN でも MCMC/SVI より 200〜10000 倍速い近似を達成。回帰用の予測ヘッド「リーマン分布」も導入。表形式分類では既に XGBoost 等を上回った（[[sources/2022-tabpfn]] の前身）。
-- **TabPFN**（Hollmann et al. 2022 → [[sources/2022-tabpfn]]）: 上記を表形式データ向けに特化・大規模化。[[structural-causal-model]] と BNN の混合を事前分布にし、小規模表データで GBDT を上回り 1 時間級 AutoML に 1 秒未満で並ぶ。PFN を実用レベルに引き上げた代表例。
+- **TabPFN（v1）**（Hollmann et al. 2022 → [[sources/2022-tabpfn]]）: 上記を表形式データ向けに特化。[[structural-causal-model]] と BNN の混合を事前分布にし、小規模表データ（〜1000 サンプル）で GBDT を上回り 1 時間級 AutoML に 1 秒未満で並ぶ。PFN を実用レベルに引き上げた最初の例。
+- **TabPFN v2**（Hollmann et al. 2025, Nature → [[sources/2025-tabpfn-v2]]）: v1 を 50 倍スケール（〜10,000 サンプル・500 特徴量）し、カテゴリ・欠損・外れ値・回帰をネイティブ対応。各セルを 1 トークンとする 2 次元アテンションを採用。さらに生成・密度推定・埋め込み・ファインチューニングを備えた **表形式基盤モデル（[[tabular-foundation-model]]）** へ発展。
+- **TabPFN-2.5**（Prior Labs 2025 → [[sources/2025-tabpfn-2-5]]）: v2 を 〜50,000 サンプル・2,000 特徴量（セル 20×）へスケールし、業界標準ベンチ TabArena で首位。深い層＋"thinking rows"、実データ微調整版 Real-TabPFN-2.5、本番展開用の蒸留（as-MLP/TreeEns）、因果推論応用を追加。
+- **TabPFN-3**（Prior Labs 2026 → [[sources/2026-tabpfn-3]]）: **100 万行**へスケールし、**テスト時計算（Thinking mode）** を導入。多クラス（最大160）・関係データ・時系列・テキストへ拡大。アーキテクチャは v2.x の行×特徴量交互アテンションを捨て、**v1 流の「行全体に対する ICL」へ回帰**（TabICLv2 系の 3 段で各行を 1 ベクトルに圧縮→系列長が行数のみに比例し大規模に効率的）。PFN 系の現最前線。
+- **TabICL（Inria 系）**（Qu et al. → [[sources/2025-tabicl]] v1 / [[sources/2026-tabicl-v2]] v2）: TabPFN 一族とは**別グループ**だが、SCM 合成事前分布＋ICL という PFN 流の枠組みを共有する兄弟。「列ごと埋め込み→行圧縮→行 ICL」の **3 段アーキテクチャ** で大規模（最大 50 万サンプル）対応を実現。**v2（TabICLv2）は回帰・QASSMax・新 prior・Muon でオープンな SOTA** となり、この設計を TabPFN-3 が採用した（上記の「v1 流 ICL への回帰」の源流＝"TabICLv2 ベース"）。
 
 ## 限界
 

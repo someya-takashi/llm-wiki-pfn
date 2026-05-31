@@ -8,7 +8,7 @@ year: 2022
 venue: ICLR 2023
 ingested: 2026-05-30
 tags: [pfn, tabpfn, in-context-learning, bayesian-inference, structural-causal-model, tabular, automl]
-translation: [[translations/2022-tabpfn]]
+translation: "[[translations/2022-tabpfn]]"
 ---
 
 # TabPFN: 小規模な表形式分類を 1 秒で解く Transformer

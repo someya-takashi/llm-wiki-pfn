@@ -54,6 +54,8 @@ PFN/
 
 すべての wiki ページに YAML frontmatter を付与する。Obsidian Dataview で集計できるようにする。
 
+**重要（Obsidian 互換）**: frontmatter 内で `[[wikilink]]` を値に使うときは**必ず引用符で囲む**（`"[[...]]"`）。裸の `[[...]]` は YAML では入れ子配列と解釈され、Obsidian で「無効なプロパティ」になる。リンクが複数あるフィールド（`related` / `sources` / `sources_used`）は **YAML ブロックリスト**（各行 `  - "[[...]]"`）にする。単一リンク（`translation` / `source_page`）は `key: "[[...]]"` と引用符付きの 1 行で書く。本文（frontmatter 外）の `[[wikilink]]` は引用符不要（通常どおり）。
+
 ### sources/*.md
 
 ```yaml
@@ -67,7 +69,7 @@ year: 2022
 venue: ICLR 2023
 ingested: 2026-05-30
 tags: [pfn, tabpfn, in-context-learning, tabular, bayesian-inference]
-translation: [[translations/2022-tabpfn]]
+translation: "[[translations/2022-tabpfn]]"
 ---
 ```
 
@@ -77,7 +79,7 @@ translation: [[translations/2022-tabpfn]]
 ---
 type: translation
 source_path: raw/papers/2022-tabpfn.pdf
-source_page: [[sources/2022-tabpfn]]
+source_page: "[[sources/2022-tabpfn]]"
 original_language: en
 translated_to: ja
 translated_at: 2026-05-30
@@ -91,8 +93,12 @@ translated_at: 2026-05-30
 type: concept
 aliases: [PFN, Prior-Data Fitted Networks]
 tags: [meta-learning, bayesian-inference, in-context-learning]
-related: [[in-context-learning]], [[bayesian-inference]]
-sources: [[sources/2021-transformers-can-do-bayesian-inference]], [[sources/2022-tabpfn]]
+related:
+  - "[[in-context-learning]]"
+  - "[[bayesian-inference]]"
+sources:
+  - "[[sources/2021-transformers-can-do-bayesian-inference]]"
+  - "[[sources/2022-tabpfn]]"
 updated: 2026-05-30
 ---
 ```
@@ -104,7 +110,8 @@ updated: 2026-05-30
 type: question
 asked: 2026-05-30
 question: "TabPFN と勾配ブースティング（GBDT）は小規模表データでどちらが強いか？"
-sources_used: [[sources/2022-tabpfn]]
+sources_used:
+  - "[[sources/2022-tabpfn]]"
 ---
 ```
 
