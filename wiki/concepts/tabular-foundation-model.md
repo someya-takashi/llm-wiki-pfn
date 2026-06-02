@@ -15,7 +15,7 @@ sources:
   - "[[sources/2025-tabicl]]"
   - "[[sources/2026-tabicl-v2]]"
   - "[[sources/2025-real-tabpfn]]"
-updated: 2026-05-30
+updated: 2026-06-01
 ---
 
 # Tabular Foundation Model（表形式基盤モデル）
@@ -87,3 +87,5 @@ TFM は予測器を超えて、他タスクの**基盤層**になりつつある
 - [[sources/2025-real-tabpfn]] — 実データでの継続事前訓練（RealTabPFN-2.5 の前身）
 - [[bayesian-optimization]] — TFM をサロゲートに使える下流応用（従来は GP）
 - [[sources/2018-bayesian-optimization-tutorial]] — ベイズ最適化のチュートリアル（サロゲート＋獲得関数）
+- [[questions/pfn-paper-and-gaussian-process]] — TFM が平均・分散（予測分布）を出力する仕組み
+- [[questions/tabpfn-tabicl-versions-mechanism]] — 各バージョンの TabPFN/TabICL が GP をどう扱うか

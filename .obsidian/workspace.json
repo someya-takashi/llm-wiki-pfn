@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/questions/pfn-paper-and-gaussian-process.md",
+                "file": "wiki/concepts/bayesian-optimization.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "pfn-paper-and-gaussian-process"
+              "title": "bayesian-optimization"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wiki/questions/pfn-paper-and-gaussian-process.md",
+                "file": "wiki/concepts/bayesian-optimization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "pfn-paper-and-gaussian-processへのバックリンク"
+              "title": "bayesian-optimizationへのバックリンク"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wiki/questions/pfn-paper-and-gaussian-process.md",
+                "file": "wiki/concepts/bayesian-optimization.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "pfn-paper-and-gaussian-processからのアウトゴーイングリンク"
+              "title": "bayesian-optimizationからのアウトゴーイングリンク"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wiki/questions/pfn-paper-and-gaussian-process.md",
+                "file": "wiki/concepts/bayesian-optimization.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "pfn-paper-and-gaussian-processのアウトライン"
+              "title": "bayesian-optimizationのアウトライン"
             }
           }
         ]
@@ -185,11 +185,13 @@
   },
   "active": "72538caf1a7e8fc3",
   "lastOpenFiles": [
+    "wiki/questions/pfn-paper-and-gaussian-process.md",
+    "wiki/questions/tabpfn-tabicl-versions-mechanism.md",
+    "wiki/index.md.tmp.78649.a78be5e30c19",
     "wiki/translations/2021-transformers-can-do-bayesian-inference.md",
     "raw/assets/pfn-paper-and-gaussian-process/fig-pfn-gp-pipeline.png",
     "raw/assets/pfn-paper-and-gaussian-process",
     "wiki/index.md",
-    "wiki/questions/pfn-paper-and-gaussian-process.md",
     "wiki/questions/gaussian-process-intuitive-explainer.md",
     "raw/assets/gaussian-process-intuitive-explainer/f6-cholesky-sampling.png",
     "wiki/translations/2022-gpr-part2-concrete.md",
@@ -226,10 +228,7 @@
     "wiki/sources/2020-gp-regression-tutorial.md",
     "wiki/concepts/bayesian-inference.md",
     "wiki/concepts/bayesian-optimization.md",
-    "wiki/sources/2018-bayesian-optimization-tutorial.md",
-    "wiki/translations/2018-bayesian-optimization-tutorial.md",
     "raw/assets/2018-bayesian-optimization-tutorial",
-    "raw/assets/2020-gp-regression-tutorial",
-    "raw/assets/2025-real-tabpfn"
+    "raw/assets/2020-gp-regression-tutorial"
   ]
 }

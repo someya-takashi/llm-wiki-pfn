@@ -12,7 +12,7 @@ sources:
   - "[[sources/2026-tabpfn-3]]"
   - "[[sources/2025-tabicl]]"
   - "[[sources/2026-tabicl-v2]]"
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Structural Causal Model（SCM, 構造的因果モデル）
@@ -59,3 +59,4 @@ TabPFN は SCM を事前分布に使うが、**因果グラフを推定したり
 - [[sources/2025-tabpfn-2-5]] — 因果推論（CATE/RealCause）応用
 - [[sources/2026-tabpfn-3]] — SCM 事前分布の拡張（時間 DSCM・空間・OOD）と因果推論（QINI）
 - [[sources/2025-tabicl]] — 木ベース SCM 事前分布＋活性化関数の多様化（別系統 TabICL）
+- [[questions/tabpfn-tabicl-versions-mechanism]] — GP に代わり SCM が主役になった経緯と各世代の事前分布

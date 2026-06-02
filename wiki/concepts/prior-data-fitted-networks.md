@@ -16,7 +16,7 @@ sources:
   - "[[sources/2025-tabicl]]"
   - "[[sources/2026-tabicl-v2]]"
   - "[[sources/2025-real-tabpfn]]"
-updated: 2026-05-30
+updated: 2026-06-01
 ---
 
 # Prior-Data Fitted Networks（PFN）
@@ -84,3 +84,5 @@ $$
 - [[bayesian-inference]] — 近似対象（PPD）の理論的背景
 - [[structural-causal-model]] — TabPFN の事前分布の中核
 - [[sources/2022-tabpfn]] — TabPFN 論文
+- [[questions/pfn-paper-and-gaussian-process]] — PFN 原典と GP の関係・出力の仕組み・カーネル/ハイパラの扱い
+- [[questions/tabpfn-tabicl-versions-mechanism]] — 各バージョンの TabPFN/TabICL は GP をどう扱うか

@@ -8,7 +8,7 @@ related:
 sources:
   - "[[sources/2021-transformers-can-do-bayesian-inference]]"
   - "[[sources/2022-tabpfn]]"
-updated: 2026-05-30
+updated: 2026-06-01
 ---
 
 # Bayesian Inference と事後予測分布（PPD）
@@ -48,3 +48,4 @@ $$
 - [[in-context-learning]] — 償却ベイズ推論としての解釈
 - [[structural-causal-model]] — TabPFN が用いる事前分布 $p(\phi)$ の中身
 - [[sources/2022-tabpfn]]
+- [[questions/pfn-paper-and-gaussian-process]] — PPD を厳密に解ける GP を物差しに PFN を検証した話・出力の仕組み

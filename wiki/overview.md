@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-05-30
+updated: 2026-06-01
 ---
 
 # PFN（Prior-Data Fitted Networks）総括
@@ -35,4 +35,5 @@ updated: 2026-05-30
 ## 関連ページ
 
 - [[prior-data-fitted-networks]] ・ [[in-context-learning]] ・ [[bayesian-inference]] ・ [[structural-causal-model]] ・ [[gaussian-process]] ・ [[tabular-foundation-model]] ・ [[bayesian-optimization]]
+- 掘り下げ（questions）: [[questions/gaussian-process-intuitive-explainer]] ・ [[questions/pfn-paper-and-gaussian-process]] ・ [[questions/tabpfn-tabicl-versions-mechanism]]
 - [[index]]

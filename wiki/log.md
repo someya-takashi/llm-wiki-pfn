@@ -282,3 +282,34 @@
 - 図: **新規作成 1 枚** `raw/assets/pfn-paper-and-gaussian-process/fig-pfn-gp-pipeline.png`（①事前分布を選ぶ→②合成データ生成→③PFN 事前訓練→④推論で予測分布、の 4 ボックス模式図＋「カーネル/ハイパラは②に埋め込まれ③で重みにコンパイル・④では見ない」注記）。venv `/tmp/gpvenv` の matplotlib＋Hiragino。
 - 参照: [[sources/2021-transformers-can-do-bayesian-inference]]（§3 訓練・§5.1 固定 GP・§5.2 ハイパー事前分布・付録F の具体値 RBF 0.6 / Matérn ν=2.5＋Gamma）, [[prior-data-fitted-networks]], [[in-context-learning]], [[tabular-foundation-model]], [[sources/2025-tabpfn-v2]]。
 - 核心メッセージ: 「PFN は事前分布を学習しない。事前分布（カーネル＋ハイパー事前分布）は設計＝合成データ生成器で、PFN が学習するのは推論（データ→予測分布）」。数値（200x/1000〜8000x）・設定は原典訳と一致を確認。
+
+## [2026-06-01] query | TabPFN/TabICL 各バージョンで方式は同じか
+
+- 問い: PFN が固定カーネル/ハイパラを重みに内在するのは理解した。TabPFN・TabICL の各バージョンでもこの方式は同じか。
+- 作成: [[questions/tabpfn-tabicl-versions-mechanism]]（3 件目の questions ページ）
+- 更新: [[index]]（Questions に 1 行追記）
+- 参照: [[prior-data-fitted-networks]]（共通の骨格・代表手法一覧）, [[structural-causal-model]]（各世代の事前分布の中身）, source 群（2021 原典・2022-tabpfn・2025-tabpfn-v2・2025-tabpfn-2-5・2026-tabpfn-3・2025-tabicl・2026-tabicl-v2・2025-real-tabpfn）。
+- 結論: 骨格（事前分布を重みに焼き込む＋ICL 推論＋推論時にカーネル/ハイパラを推定しない）は全バージョン共通。差分は (a) 事前分布の中身（GP トイ→SCM→多様なランダム関数混合、GP は TabICLv2 では一材料）、(b) アーキ（2D セルアテンション⇔3 段行 ICL、TabPFN-3 は TabICLv2 系へ回帰）、(c) 回帰出力（リーマン分布／分位点分布）、(d) スケール（〜1000→100 万行）、(e) 任意拡張（継続事前訓練/微調整/蒸留/テスト時計算）。バージョン別比較表付き。
+- メモ: 前回 [[questions/pfn-paper-and-gaussian-process]] の続き。「カーネル/ハイパラを内在」は「(より複雑な) 事前分布を内在」と一般化して読み替える、を明示。新規作図なし。
+
+## [2026-06-01] query | （修正）questions ページを「ガウス過程限定」に作り替え
+
+- 経緯: ユーザーの本来の問いは「各バージョンが **GP を** 同じように扱うか」という GP 限定の質問だった。直前に作った [[questions/tabpfn-tabicl-versions-mechanism]] は一般機構（SCM・アーキ・回帰出力・例外）まで広げていたため、**GP 限定の回答に全面改稿**（同一ファイルを書き換え。slug は据え置き＝log の過去エントリとの整合のため）。
+- 更新: [[questions/tabpfn-tabicl-versions-mechanism]] を改稿（タイトル「各バージョンはガウス過程をどう扱うか」、frontmatter の question を GP 限定に、sources_used から Real-TabPFN を除外）。一般機構の「深掘り出力／2D⇔3 段アーキ／重み固定の例外」など GP 非関連の節を削除し、[[prior-data-fitted-networks]] / [[questions/pfn-paper-and-gaussian-process]] へ誘導。[[index]] の説明も GP 限定に更新。
+- 結論（GP 限定）: 「GP（固定カーネル）を事前分布として焼き込む」のは **PFN 原典のトイ例のみ**。表形式系では主役が SCM に移り、GP の役割は ①ベースライン/物差し（原典・TabPFN v1）②多数の合成関数の一材料（TabICL v1 の活性化・TabICLv2 の 8 種の 1 つ）③不使用（TabPFN v2/2.5/3）へ世代変化。共通なのは PFN の一般機構であって GP の使い方ではない。
+- 参照: 各 source の GP 言及を確認（2022-tabpfn＝GP 様挙動/PFN-GP・2025-tabicl＝活性化に GP 由来・2026-tabicl-v2＝8 種の 1 つが GP・v2/2.5/3 は GP を prior 材料にせず）。
+
+## [2026-06-01] lint-fix | questions の逆リンク補修＋updated 日付の更新
+
+- 経緯: lint で (1) questions 3 ページが概念/overview から逆リンクされていない（index からのみ到達）、(2) 一部 concept/overview の `updated` 日付が編集後も 2026-05-30 のまま、を検出。両方を修正。
+- 逆リンク追加（各ページの「関連ページ」へ）:
+  - [[gaussian-process]] → questions 3 件（explainer / pfn-paper / versions）
+  - [[prior-data-fitted-networks]] → pfn-paper, versions
+  - [[structural-causal-model]] → versions
+  - [[bayesian-inference]] → pfn-paper
+  - [[in-context-learning]] → pfn-paper
+  - [[tabular-foundation-model]] → pfn-paper, versions
+  - [[overview]] → questions 3 件を「掘り下げ」として追記
+- `updated` を 2026-06-01 に更新: overview / gaussian-process / prior-data-fitted-networks / structural-causal-model / bayesian-inference / in-context-learning / tabular-foundation-model。
+- 検出のみで未対応のまま残した項目: なし（lint で挙げた課題 1・2 を解消。課題 3 データギャップは設計上問題なしと判断）。
+- メモ: 矛盾・古い内容・dangling・孤立・概念粒度は lint 時点でクリーン。今回はクロスリファレンスとメタデータのみの補修。

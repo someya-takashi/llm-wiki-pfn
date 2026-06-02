@@ -73,3 +73,4 @@
 
 - [[questions/gaussian-process-intuitive-explainer]] — ガウス過程を数式を極力使わず図で説明する直感的解説記事（GP 入門 6 本を統合）
 - [[questions/pfn-paper-and-gaussian-process]] — PFN 原典とガウス過程の関係（物差し／事前分布の素材／高速近似の 3 つ＋GP vs PFN 比較表、出力の仕組み・カーネル/ハイパラの扱いの深掘りと概念図）
+- [[questions/tabpfn-tabicl-versions-mechanism]] — TabPFN/TabICL 各バージョンは「ガウス過程」をどう扱うか（GP 焼き込みは原典トイのみ／SCM が主役／GP は一材料・物差し・不使用へ。バージョン別表）

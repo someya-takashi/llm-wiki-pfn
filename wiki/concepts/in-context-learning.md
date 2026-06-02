@@ -13,7 +13,7 @@ sources:
   - "[[sources/2026-tabpfn-3]]"
   - "[[sources/2025-tabicl]]"
   - "[[sources/2026-tabicl-v2]]"
-updated: 2026-05-30
+updated: 2026-06-01
 ---
 
 # In-Context Learning（ICL, 文脈内学習）
@@ -42,3 +42,4 @@ updated: 2026-05-30
 - [[bayesian-inference]] — ICL を償却ベイズ推論として解釈する視点
 - [[sources/2026-tabicl-v2]] — attention fading と QASSMax（長文脈 ICL 汎化）の出典
 - [[sources/2022-tabpfn]] — 表形式データへの ICL 適用例
+- [[questions/pfn-paper-and-gaussian-process]] — 文脈＋クエリ→1 回の順伝播で予測分布を出す仕組み
