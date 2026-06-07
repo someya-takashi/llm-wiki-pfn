@@ -16,7 +16,13 @@ sources:
   - "[[sources/2025-tabicl]]"
   - "[[sources/2026-tabicl-v2]]"
   - "[[sources/2025-real-tabpfn]]"
-updated: 2026-06-01
+  - "[[sources/2023-pfns4bo]]"
+  - "[[sources/2025-mitra]]"
+  - "[[sources/2025-causalpfn]]"
+  - "[[sources/2025-do-pfn]]"
+  - "[[sources/2025-nanotabpfn]]"
+  - "[[sources/2026-shappfn]]"
+updated: 2026-06-06
 ---
 
 # Prior-Data Fitted Networks（PFN）
@@ -72,6 +78,12 @@ $$
 - **TabPFN-2.5**（Prior Labs 2025 → [[sources/2025-tabpfn-2-5]]）: v2 を 〜50,000 サンプル・2,000 特徴量（セル 20×）へスケールし、業界標準ベンチ TabArena で首位。深い層＋"thinking rows"、実データ微調整版 Real-TabPFN-2.5、本番展開用の蒸留（as-MLP/TreeEns）、因果推論応用を追加。
 - **TabPFN-3**（Prior Labs 2026 → [[sources/2026-tabpfn-3]]）: **100 万行**へスケールし、**テスト時計算（Thinking mode）** を導入。多クラス（最大160）・関係データ・時系列・テキストへ拡大。アーキテクチャは v2.x の行×特徴量交互アテンションを捨て、**v1 流の「行全体に対する ICL」へ回帰**（TabICLv2 系の 3 段で各行を 1 ベクトルに圧縮→系列長が行数のみに比例し大規模に効率的）。PFN 系の現最前線。
 - **TabICL（Inria 系）**（Qu et al. → [[sources/2025-tabicl]] v1 / [[sources/2026-tabicl-v2]] v2）: TabPFN 一族とは**別グループ**だが、SCM 合成事前分布＋ICL という PFN 流の枠組みを共有する兄弟。「列ごと埋め込み→行圧縮→行 ICL」の **3 段アーキテクチャ** で大規模（最大 50 万サンプル）対応を実現。**v2（TabICLv2）は回帰・QASSMax・新 prior・Muon でオープンな SOTA** となり、この設計を TabPFN-3 が採用した（上記の「v1 流 ICL への回帰」の源流＝"TabICLv2 ベース"）。
+- **Mitra**（Zhang et al. 2025, Amazon → [[sources/2025-mitra]]）: 「PFN の性能は事前分布の設計で決まる」を**定量的な設計原理**に変えた代表例。良い prior を**性能・多様性・独自性**（汎化性行列 $\mathbf{G}$ と性能ベクトル $\mathbf{P}$）で測り、[[structural-causal-model|SCM]]＋木ベース prior の混合を選定。行 1D・要素 2D の両アーキで効く**モデル非依存**性を示し、TabPFNv2/TabICL を分類・回帰で上回る。
+- **PFNs4BO**（Müller et al. 2023 → [[sources/2023-pfns4bo]]）: PFN を**ベイズ最適化（[[bayesian-optimization]]）のサロゲート**に応用した代表例。表形式分類とは別系統の応用で、PFN を「GP のベイズ的ドロップイン置換」として使う。GP/高度GP/BNN を事前分布に持ち、固定 GP 事後を再現しつつ、GP では難しい拡張（ユーザー事前分布＝最適解位置のヒント、無関係次元の無視、獲得関数＝知識勾配を直接学習する非近視眼的 BO）を「事前分布を書くだけ」で実現。HPO ベンチで GP ベース SOTA（HEBO）を上回る。
+- **CausalPFN**（Balazadeh et al. 2025 → [[sources/2025-causalpfn]]）: PFN を**因果効果推定（処置効果 ATE/CATE）**へ拡張した代表例。予測（回帰・分類）でも最適化でもなく、「観測データから介入の効果を推定する」という新ドメインに PFN を持ち込む。鍵は**無視可能性（ignorability）を設計で焼き込んだ DGP 事前分布**——任意の表から、処置を共変量だけで生成して因果データセットを量産し、真値の条件付き期待潜在結果（CEPO）をラベルに、PFN の data-prior 損失を因果版（CEPO への前向き KL 最小化）にして訓練。予測ヘッドは原典のリーマン分布と同型の 1024 ビンのヒストグラム（CEPO-PPD）。IHDP/ACIC/Lalonde で専用の因果推定器群を無調整で上回り、PFN/ICL の射程が因果へ届くことを示した。潜在結果フレームワーク（Rubin 流）に立ち、[[structural-causal-model|SCM]] を prior 素材に使う TabPFN とは因果の定式化が異なる点に注意（→ [[structural-causal-model]]）。
+- **Do-PFN**（Robertson et al. 2025 → [[sources/2025-do-pfn]]）: 同じく PFN を因果効果推定へ拡張した代表例だが、CausalPFN とは逆に **SCM／do 計算（Pearl 流）** に立つ。prior に**介入 $do(t)$ つきの SCM** を据え、観測データから条件付き介入分布 $p(y\mid do(t),x)$ を予測（負の対数尤度最小化＝CID への前向き KL 最小化）。**因果グラフを与えず・無交絡を要求せず・同定不能性を不確実性として表現**する点が新しい。アーキは TabPFN とほぼ同じ（730 万パラメータ）。CausalPFN（潜在結果・ignorability 要求）と Do-PFN（SCM・do 計算・グラフ不要）で、「PFN の因果版」が Rubin 流と Pearl 流の両側から立ち上がった（→ [[structural-causal-model]] に両者の対比）。
+- **nanoTabPFN**（Pfefferle et al. 2025 → [[sources/2025-nanotabpfn]]）: TabPFN v2 の**教育・研究向けの軽量再実装**。Karpathy の minGPT/nanoGPT（GPT の教育的再実装）の表形式基盤モデル版。500 行未満のコードで TabPFN v2 の4構成要素（FeatureEncoder・TargetEncoder・TransformerEncoderLayer の bi-attention・Decoder）を実装し、シングル GPU 1分の事前訓練で従来 ML ベースライン（kNN・決定木・ランダムフォレスト）に並ぶ性能を実現（TabPFN v2 事前訓練より **160,000 倍速**）。「新しい prior・アーキ変更・訓練手順のアイデアを分単位で試せる出発点」として、TFM 研究のプロトタイピングを高速化する。著者は Frank Hutter（TabPFN シリーズと共通）。
+- **ShapPFN**（Sena & Azevedo 2026 → [[sources/2026-shappfn]]）: PFN に**説明可能性（Shapley 値）をアーキテクチャごと内蔵**した代表例。[[sources/2025-nanotabpfn|nanoTabPFN]] をベースに、予測を「ベース項＋特徴量ごとの加法的寄与 $\phi_f$」に分解する2つのデコーダーヘッド（BaseDecoder・ShapDecoder）を追加し、$f_\theta(x)=\mathrm{base}+\sum_f\phi_f(x)$ という加法的予測にする。ViaSHAP 流の Shapley 一致性損失で訓練すると、**予測と説明を1回の順伝播で同時に**出せ、事後計算が重い KernelSHAP（約 610 秒）を **0.06 秒（1000 倍超速）** で同品質（一致 R²=0.96）に置き換える。「ベイズ推論を事前訓練に償却する PFN」の発想を**説明計算の償却**へ応用した形。nanoTabPFN を実研究の踏み台に使った最初の公開例でもある。
 
 ## 限界
 
@@ -86,3 +98,10 @@ $$
 - [[sources/2022-tabpfn]] — TabPFN 論文
 - [[questions/pfn-paper-and-gaussian-process]] — PFN 原典と GP の関係・出力の仕組み・カーネル/ハイパラの扱い
 - [[questions/tabpfn-tabicl-versions-mechanism]] — 各バージョンの TabPFN/TabICL は GP をどう扱うか
+- [[bayesian-optimization]] — PFN を BO サロゲートに応用（[[sources/2023-pfns4bo]]）
+- [[sources/2023-pfns4bo]] — PFN を BO に応用した代表例（GP のドロップイン置換）
+- [[sources/2025-mitra]] — 合成 prior の設計原理（性能・多様性・独自性）と混合（Amazon）
+- [[sources/2025-causalpfn]] — PFN を因果効果推定に拡張（ignorability prior・CEPO-PPD）
+- [[sources/2025-do-pfn]] — PFN を介入効果推定に拡張（介入つき SCM prior・CID・do 計算）
+- [[sources/2025-nanotabpfn]] — TabPFN v2 の教育的軽量再実装（500行・1分訓練・nanoGPT の表形式版）
+- [[sources/2026-shappfn]] — PFN に Shapley 値説明を内蔵（nanoTabPFN ベース・予測と説明を1順伝播で・KernelSHAP 1000倍速）

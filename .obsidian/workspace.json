@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/concepts/bayesian-optimization.md",
+                "file": "wiki/translations/2026-shappfn.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "bayesian-optimization"
+              "title": "2026-shappfn"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wiki/concepts/bayesian-optimization.md",
+                "file": "wiki/translations/2026-shappfn.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "bayesian-optimizationへのバックリンク"
+              "title": "2026-shappfnへのバックリンク"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wiki/concepts/bayesian-optimization.md",
+                "file": "wiki/translations/2026-shappfn.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "bayesian-optimizationからのアウトゴーイングリンク"
+              "title": "2026-shappfnからのアウトゴーイングリンク"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wiki/concepts/bayesian-optimization.md",
+                "file": "wiki/translations/2026-shappfn.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "bayesian-optimizationのアウトライン"
+              "title": "2026-shappfnのアウトライン"
             }
           }
         ]
@@ -185,50 +185,51 @@
   },
   "active": "72538caf1a7e8fc3",
   "lastOpenFiles": [
-    "wiki/questions/pfn-paper-and-gaussian-process.md",
-    "wiki/questions/tabpfn-tabicl-versions-mechanism.md",
-    "wiki/index.md.tmp.78649.a78be5e30c19",
-    "wiki/translations/2021-transformers-can-do-bayesian-inference.md",
-    "raw/assets/pfn-paper-and-gaussian-process/fig-pfn-gp-pipeline.png",
-    "raw/assets/pfn-paper-and-gaussian-process",
-    "wiki/index.md",
-    "wiki/questions/gaussian-process-intuitive-explainer.md",
-    "raw/assets/gaussian-process-intuitive-explainer/f6-cholesky-sampling.png",
-    "wiki/translations/2022-gpr-part2-concrete.md",
-    "raw/assets/gaussian-process-intuitive-explainer/f5-uncertainty.png",
-    "raw/assets/gaussian-process-intuitive-explainer/f4-prior-to-posterior.png",
-    "raw/assets/gaussian-process-intuitive-explainer/f3-lengthscale.png",
-    "raw/assets/gaussian-process-intuitive-explainer/f2-prior-samples.png",
-    "raw/assets/gaussian-process-intuitive-explainer/f1-many-curves.png",
-    "raw/assets/gaussian-process-intuitive-explainer",
-    "wiki/translations/2022-gpr-part1-basics.md",
-    "wiki/sources/2025-gp-intuitive-intro.md",
-    "wiki/translations/2025-gp-intuitive-intro.md",
-    "wiki/concepts/gaussian-process.md",
-    "raw/assets/2025-gp-intuitive-intro/gp_random_sampling.gif",
-    "raw/assets/2025-gp-intuitive-intro/gp_nvda.gif",
-    "raw/assets/2025-gp-intuitive-intro/gp_most_uncertain_sampling.gif",
-    "raw/assets/2025-gp-intuitive-intro",
-    "wiki/translations/2019-gp-not-for-dummies.md",
-    "wiki/sources/2022-gpr-part2-concrete.md",
-    "raw/articles/An Intuitive Introduction to Gaussian Processes.md",
-    "raw/assets/2022-gpr-part2-concrete",
-    "wiki/sources/2022-gpr-part1-basics.md",
-    "raw/assets/2022-gpr-part1-basics",
-    "raw/articles/Introduction to Gaussian process regression, Part 2_ Application to predicting concrete strength.md",
-    "raw/articles/Introduction to Gaussian process regression, Part 1_ The basics.md",
-    "wiki/translations/2020-gp-regression-tutorial.md",
-    "wiki/sources/2019-gp-not-for-dummies.md",
-    "raw/assets/2019-gp-not-for-dummies",
-    "wiki/sources/2021-gp-models-intro.md",
-    "wiki/translations/2021-gp-models-intro.md",
-    "raw/assets/2021-gp-models-intro",
-    "raw/articles/Gaussian Processes, not quite for dummies.md",
-    "raw/articles/An Introduction to Gaussian Process Models.md",
-    "wiki/sources/2020-gp-regression-tutorial.md",
-    "wiki/concepts/bayesian-inference.md",
-    "wiki/concepts/bayesian-optimization.md",
-    "raw/assets/2018-bayesian-optimization-tutorial",
-    "raw/assets/2020-gp-regression-tutorial"
+    "wiki/concepts/tabular-foundation-model.md.tmp.78649.84ad52e5478d",
+    "wiki/concepts/tabular-foundation-model.md.tmp.78649.142a397d13e0",
+    "wiki/sources/2026-shappfn.md",
+    "wiki/translations/2026-shappfn.md.tmp.78649.b950714e35bd",
+    "raw/assets/2026-shappfn/architecture.png",
+    "raw/assets/2026-shappfn/architecture.svg",
+    "raw/assets/2026-shappfn",
+    "wiki/sources/2022-tabpfn.md",
+    "wiki/translations/2026-shappfn.md",
+    "raw/articles/Real-Time Explanations for Tabular Foundation Models.md",
+    "wiki/sources/2025-nanotabpfn.md",
+    "wiki/translations/2025-nanotabpfn.md",
+    "raw/assets/2025-nanotabpfn/summary.png",
+    "raw/assets/2025-nanotabpfn/roc_auc.png",
+    "raw/assets/2025-nanotabpfn/x1.png",
+    "raw/assets/2025-nanotabpfn/architecture.png",
+    "raw/assets/2025-nanotabpfn",
+    "raw/articles/nanoTabPFN_ A Lightweight and Educational Reimplementation of TabPFN.md",
+    "wiki/sources/2025-chronos-2.md",
+    "wiki/translations/2025-chronos-2.md",
+    "raw/assets/2025-chronos-2/x9.png",
+    "raw/assets/2025-chronos-2/x7.png",
+    "raw/assets/2025-chronos-2/x4.png",
+    "raw/assets/2025-chronos-2/x30.png",
+    "raw/assets/2025-chronos-2",
+    "wiki/concepts/tabular-foundation-model.md.tmp.78649.74ac723c5c4a",
+    "wiki/sources/2025-do-pfn.md",
+    "wiki/translations/2025-do-pfn.md",
+    "raw/articles/Chronos-2_ From Univariate to Universal Forecasting.md",
+    "raw/assets/2025-do-pfn",
+    "raw/articles/Do-PFN_ In-Context Learning for Causal Effect Estimation.md",
+    "wiki/sources/2025-causalpfn.md",
+    "wiki/translations/2025-causalpfn.md",
+    "raw/assets/2025-causalpfn",
+    "raw/articles/CausalPFN_ Amortized Causal Effect Estimation via In-Context Learning.md",
+    "wiki/questions/pfn-and-bayesian-optimization.md",
+    "raw/assets/pfn-and-bayesian-optimization",
+    "wiki/concepts/bayesian-optimization.md.tmp.78649.fbce0caa75bf",
+    "wiki/sources/2025-git-bo.md",
+    "wiki/translations/2025-git-bo.md",
+    "raw/articles/GIT-BO_ High-Dimensional Bayesian Optimization with Tabular Foundation Models.md",
+    "wiki/questions/evaluating-pfn-gp-approximation.md",
+    "wiki/questions/riemann-distribution-buckets.md",
+    "wiki/sources/2025-mitra.md",
+    "wiki/translations/2025-mitra.md",
+    "raw/articles/LoFTR_ Detector-Free Local Feature Matching with Transformers.md"
   ]
 }

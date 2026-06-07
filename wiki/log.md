@@ -313,3 +313,129 @@
 - `updated` を 2026-06-01 に更新: overview / gaussian-process / prior-data-fitted-networks / structural-causal-model / bayesian-inference / in-context-learning / tabular-foundation-model。
 - 検出のみで未対応のまま残した項目: なし（lint で挙げた課題 1・2 を解消。課題 3 データギャップは設計上問題なしと判断）。
 - メモ: 矛盾・古い内容・dangling・孤立・概念粒度は lint 時点でクリーン。今回はクロスリファレンスとメタデータのみの補修。
+
+## [2026-06-03] ingest | PFNs4BO: In-Context Learning for Bayesian Optimization（ICML 2023）
+
+- 取り込み: `raw/papers/PFNs4BO- In-Context Learning for Bayesian Optimization.pdf`（Samuel Müller, Matthias Feurer, Noah Hollmann, Frank Hutter / ICML 2023, arXiv:2305.17535）
+- 作成: [[sources/2023-pfns4bo]], [[translations/2023-pfns4bo]]
+- 更新: [[concepts/bayesian-optimization]]（PFNs4BO を「PFN サロゲートの正準的実体」として本文・sources・related に追記、updated→06-03）, [[concepts/prior-data-fitted-networks]]（代表手法に PFNs4BO＝BO 応用を追加、sources/related、updated→06-03）, [[concepts/gaussian-process]]（固定 GP 事後の再現＝図1、sources/related、updated→06-03）, [[overview]]（BO 節に PFNs4BO を反映、updated→06-03）, [[index]]
+- 画像: **PDF（ケース B）のため画像は取り込まず**、図表（図1〜5・表1）はキャプションのテキスト訳のみ translation に残した。
+- メモ:
+  - **本文 §1〜8 のみ訳出**（ユーザー appendix 指定なし）。Acknowledgements・References・付録 A〜L は対象外。スラグは ICML 2023 → `2023-pfns4bo`。
+  - 内容: PFN を **BO の GP サロゲートのベイズ的ドロップイン置換**に。3 事前分布（単純 GP・HEBO 着想 HEBO/HEBO⁺・BNN）。獲得関数 EI/PI/UCB をリーマン分布から厳密計算、勾配で獲得関数最適化＋入力ワーピング。**GP では難しい拡張**＝ユーザー事前分布 $p(D|\rho,I)$・無関係次元 30%・**非近視眼的 KG を直接学習**。HPO-B/Bayesmark/PD1 の 105 タスクで評価し HEBO（GP ベース SOTA）を上回る場面を示す。限界＝事前分布で低尤度のデータに弱い・同時サンプル不可・〜1000 点まで。
+  - PFN 文脈での位置づけ: 原典（[[sources/2021-transformers-can-do-bayesian-inference]]）と同著者グループの **BO 応用編**。これまで [[bayesian-optimization]]/[[prior-data-fitted-networks]] が予告していた「GP の代わりの高速サロゲート」の正準実体で、[[questions/pfn-paper-and-gaussian-process]] の応用側、TabPFNv2 を BO に使う GIT-BO 流れの源流。新規 concept は作らず既存 2 概念に統合。
+
+## [2026-06-03] ingest(追記) | PFNs4BO の付録 A〜M を翻訳追加
+
+- ユーザー指示により [[translations/2023-pfns4bo]] に **付録 A〜M を一文ずつ全訳**して追記（PDF の page 14〜27）。冒頭注記を「本文 §1〜8 ＋ 付録 A〜M」に更新。References・Acknowledgements は引き続き対象外。
+- 付録の内容: A 探索空間分割 / B 事前分布詳細（B.1 HEBO 着想の Gamma ハイパー事前分布、B.2 BNN＝tanh MLP 8〜15層・重みドロップ等）/ C 獲得関数最適化（10万ランダム＋L-BFGS-B）/ D BO トリック（べき変換・単位超立方体化）/ E 訓練詳細（次元 1〜18・埋め込み512・6層・8×2080Ti 24h, E.1 リーマン分布）/ F リーマン分布の PI 閉形式（式5〜8）/ G ユーザー事前分布の構築（式9〜14）/ H 非近視眼 KG の 2 段近似（式15・16, H.1 少次元で KG×EI 混合）/ I 事前データ上の近似品質（HEBO 尤度比較・図8〜12）/ J PD1 のユーザー事前分布（表2）/ K 他の BO サロゲート（DNGO/BOHAMIANN/Deep GP/木）/ L アブレーション（HEBO 変種・無関係特徴量＝表3・獲得関数＝表4・図13〜18）/ M ソフトウェアバージョン。
+- 図表は PDF（ケース B）のため画像取り込みなし、図1〜18・表1〜4 はキャプションのテキスト訳のみ。index/source の翻訳範囲表記も「§1〜8 ＋ 付録 A〜M」に更新。
+
+## [2026-06-03] ingest | Mitra: Mixed Synthetic Priors for Enhancing Tabular Foundation Models（arXiv 2025）
+
+- 取り込み: `raw/articles/Mitra_ Mixed Synthetic Priors for Enhancing Tabular Foundation Models.md`（Xiyuan Zhang ら / Amazon, arXiv:2510.21204）
+- 作成: [[sources/2025-mitra]], [[translations/2025-mitra]]
+- 更新: [[concepts/structural-causal-model]]（「良い prior を測る原理（性能・多様性・独自性）」節を新設、sources/related、updated→06-03）, [[concepts/tabular-foundation-model]]（sources/related、updated→06-03）, [[concepts/prior-data-fitted-networks]]（代表手法に Mitra 追加、sources/related、updated→06-03）, [[overview]]（事前分布の設計の節に Mitra を反映）, [[index]]（sources/translations/略称リダイレクト）
+- 図保存: ar5iv 由来 markdown（ケース A）。**26 枚を `raw/assets/2025-mitra/` にローカル保存**（x1〜x26、素 PNG）。translations に全 26 図を `<figure>` で配置、sources に図1 を再掲。
+- メモ:
+  - **本文 §1〜5 ＋ 付録 A〜D を全訳**（ユーザー指示「appendix も含めて」）。References は対象外。スラグは arXiv 2510（2025年10月）→ `2025-mitra`。
+  - 内容: TFM の性能は合成 prior の設計で決まるという主張を、**「良い prior」を性能（実データ）・多様性（汎化性行列 $\mathbf{G}$ の対角が低い）・独自性（非対角が低い）で測る原理**に体系化。Mitra は **SCM＋木ベース prior（DT/ET/GB/RF＋直接サンプリング DSRF）の 50/50 混合**を選定。行 1D・要素 2D の両アーキで効く**モデル非依存**性を示し、TabPFNv2/TabICL を分類・回帰で上回る。最大 16 特徴量・640 行でしか事前訓練しないのに汎化。バギング・TabArena・スケーリング則・決定境界（GP が一部で強い→今後 GP prior 追加）も付録に。
+  - 大きな結果表（表2〜18）はキャプションを訳出し、主要表（2/3/4/7/17）を markdown 化、巨大な per-dataset/leaderboard 表は要点（首位 Elo 等）を注記。アルゴリズム1〜5 は引用ブロックで訳出。
+  - PFN 文脈: [[structural-causal-model]] の「prior 多様性が最大の性能要因」（TabICLv2）を **prior の選び方の方法論**へ一般化。[[tabular-foundation-model]] の中核命題に定量的設計指針を与える。新規 concept は作らず既存 3 概念に統合。
+
+## [2026-06-03] query | リーマン分布のバケット／prior-data とは
+
+- 問い: [[sources/2021-transformers-can-do-bayesian-inference]] の「リーマン分布は prior-data 上で等確率になるようバケットに離散化」が分からない。prior-data・バケットとは。
+- 作成: [[questions/riemann-distribution-buckets]]（4 件目の questions ページ）
+- 図: **新規作成 1 枚** `raw/assets/riemann-distribution-buckets/f1-buckets.png`（左＝prior-data の歪んだ y 分布を分位点で等確率10バケットに区切る／右＝推論時の固定バケット上のヒストグラム型出力）。venv `/tmp/gpvenv` の matplotlib＋Hiragino。
+- 更新: [[index]]（Questions に 1 行）
+- 参照: 原典付録 E.2（定義 $p(y)=p_{b(y)}/w(b(y))$・定理1・半正規の裾）, [[sources/2025-mitra]] 付録 E.1（$p(y\in b)=1/|\mathbf{B}|$）, [[sources/2023-pfns4bo]] §3.4/付録F（リーマン分布から EI/PI/UCB を厳密計算）。
+- 要点: バケット＝y 軸の区間（ヒストグラムのビン）、prior-data＝事前分布から作った合成訓練データ、等確率＝prior-data の分位点で境界を置き各バケットの確率を 1/|B| に揃える（密な所は狭く・疎な所は広く）。これで回帰を分類に変え任意の形の予測分布を表せる。前回の「予測分布から平均・分散を読む」（[[questions/pfn-paper-and-gaussian-process]]）と接続。
+
+## [2026-06-03] query | PFN の GP 近似を定量評価する指標
+
+- 問い: 原典のように PFN が GP 回帰（平均・信頼幅）をどれだけ近似できているか定量評価したい。おすすめ指標は。
+- 作成: [[questions/evaluating-pfn-gp-approximation]]（5 件目の questions ページ。ユーザー希望で表・プロトコルのみ、コード/図なし）
+- 更新: [[index]]（Questions に 1 行）
+- 参照: [[sources/2021-transformers-can-do-bayesian-inference]]（Prior-Data NLL＝図4a・図3 の平均/95%CI 可視化・ECE 0.025・損失＝KL+定数の系1.1）, [[sources/2023-pfns4bo]]（保留尤度比較・図11/12 で厳密 GP と重ねる）, [[sources/2026-tabicl-v2]]（回帰で CRPS）。
+- 結論: (A) 固定ハイパラ GP の**厳密事後を物差し**に → 点ごと KL(厳密GP‖PFN, ガウス閉形式)・平均RMSE・信頼幅(σ/95%CI半幅)RMSE・2-Wasserstein。(B) 厳密 GP が無い場合 → 保留 NLL・CRPS・被覆率/分位点較正。最小セット＝KL＋平均/σ RMSE＋被覆率を $n$ を変えて測る。実装注記: PFN 出力はリーマン分布なので (a) 平均・分散抽出で比較 / (b) CRPS・数値KL で分布ごと比較（多峰・歪みは後者でしか見えない）。
+
+## [2026-06-03] ingest | GIT-BO: High-Dimensional Bayesian Optimization with Tabular Foundation Models（arXiv 2025）
+
+- 取り込み: `raw/articles/GIT-BO_ High-Dimensional Bayesian Optimization with Tabular Foundation Models.md`（Rosen Ting-Ying Yu, Cyril Picard, Faez Ahmed / MIT, arXiv:2505.20685）
+- 作成: [[sources/2025-git-bo]], [[translations/2025-git-bo]]
+- 更新: [[concepts/bayesian-optimization]]（GIT-BO を高次元 BO サロゲートとして本文・sources・related に追記）, [[concepts/tabular-foundation-model]]（sources/related・本文 BO 応用にリンク）, [[concepts/gaussian-process]]（GIT-BO 言及にリンク）, [[overview]], [[index]]（sources/translations/略称リダイレクト）。既存の各所「GIT-BO」言及を [[sources/2025-git-bo]] にリンク。
+- 図保存: ar5iv 由来 markdown（ケース A）。**本文の図 4 枚を `raw/assets/2025-git-bo/` に保存**（x2=図2・x3=図3・x4=図4・x5=図5）。**図1（アーキ概要 x1）は ar5iv 側が "NO IMAGE AVAILABLE" のプレースホルダで画像変換失敗 → DL せずキャプションのみ訳出**（取得失敗扱い）。translations に図2〜5 を `<figure>`、sources に図5 を再掲。
+- メモ:
+  - **本文 §1〜6 のみ訳出**（ユーザー appendix 指定なし）。付録 A〜C・References は対象外。スラグは arXiv 2505（2025年5月）→ `2025-git-bo`。
+  - 内容: **TabPFN v2 を高次元 BO（100〜500 次元）のサロゲート**に。固定基盤モデルは GP と違いカーネルを適応できないが、GIT-BO は **TabPFN 予測平均の順伝播勾配 ∇μ から診断行列 H=E[∇μ∇μᵀ] を作り上位 r=15 固有ベクトルで“勾配誘導能動部分空間”を毎反復構築**、その低次元部分空間内で Thompson Sampling。GP の O(n³) 再訓練不要。23 ベンチ・63 変種で SOTA（首位ランク1.97、SAASBO 等より 2 桁速い）。アブレーションで GI 部分空間なしのバニラ TabPFNv2 は大失敗（8.6 倍悪いリグレット）。限界＝GPU 必須・500 次元上限・訓練分布外（車設計）で順位低下。
+  - PFN 文脈での位置づけ: wiki が各所で予告していた「高次元 BO のサロゲートに TabPFNv2 を使う」の**本体**。[[sources/2023-pfns4bo]]（低次元 BO）の高次元版。新規 concept は作らず既存概念に統合。
+
+## [2026-06-03] query | PFN とベイズ最適化の関係（初心者向け解説）
+
+- 問い: 「PFN とベイズ最適化の関係を初心者にもわかりやすく解説した記事を作成して」。
+- 作成: [[questions/pfn-and-bayesian-optimization]]（6 件目の questions ページ）
+- 図: **新規作成 1 枚** `raw/assets/pfn-and-bayesian-optimization/fig-bo-loop.png`（BO の 4 ノード円環ループ＋②サロゲート＝GP or PFN の吹き出し）。venv `/tmp/gpvenv` の matplotlib＋Hiragino。**再掲 4 枚**（Frazier の BO 例・GP の予測帯・PFN パイプライン図・GIT-BO アブレーション、各出典つき）。
+- 更新: [[index]]（Questions に 1 行）
+- 参照: [[sources/2018-bayesian-optimization-tutorial]]（BO 基礎）, [[sources/2021-transformers-can-do-bayesian-inference]]（PFN が GP を近似する根拠）, [[sources/2023-pfns4bo]]（低次元 BO 代表）, [[sources/2025-git-bo]]（高次元 BO 代表）, [[bayesian-optimization]] / [[prior-data-fitted-networks]]。
+- 構成: BO とは→サロゲート＋獲得関数→GP の弱点→PFN とは→**サロゲートを GP→PFN に差し替える（核心）**→代表例（PFNs4BO 低次元 / GIT-BO 高次元、簡潔）→GP vs PFN 比較表→まとめ。初心者向けに略称初出展開・数式は最小限（詳細はリンク委譲）。既存 [[questions/pfn-paper-and-gaussian-process]]（GP↔PFN）とは焦点を分け相互リンク。
+
+## [2026-06-03] ingest | CausalPFN: Amortized Causal Effect Estimation via In-Context Learning
+
+- 取り込み: `raw/articles/CausalPFN_ Amortized Causal Effect Estimation via In-Context Learning.md`（ar5iv, arXiv:2506.07918, Balazadeh et al. / U Toronto・Vector・Layer6 AI 2025）。ケース A。
+- 作成: [[sources/2025-causalpfn]], [[translations/2025-causalpfn]]
+- 更新: [[structural-causal-model]], [[prior-data-fitted-networks]], [[in-context-learning]], [[bayesian-inference]], [[tabular-foundation-model]], [[overview]], [[index]]
+- 翻訳範囲: **ユーザー指示により付録も含めて全訳**。本文 §1〜7 ＋ 付録 A〜D（A 記法/定義/仮定・B 一致性証明〔Doob 系〕・C data-prior 損失=前向き KL の証明・D 実験詳細 D.1〜D.5）。References・Appendix Contents スタブ・Acknowledgments は除外。Algorithm 1 は引用ブロックで訳出。
+- 画像: 全14図（x1〜x14）を ar5iv から取得し `raw/assets/2025-causalpfn/` に保存（`file` で妥当画像と確認、参照=保存=14枚一致）。本文 Fig1〜7＝x1〜x7、付録 D.5 較正曲線 Fig8〜14＝x8〜x14。取得失敗なし。
+- 概念粒度: 新規 concept ページは作らず既存5概念に統合（CLAUDE.md §1）。
+- **設計判断（重要）**: CausalPFN は SCM/DAG ではなく**潜在結果フレームワーク（Rubin）＋強い ignorability** に立つため、[[structural-causal-model]] には「SCM とは別形式」と明記したうえで小節を追加して接続（prior 素材としての SCM 用法とは区別）。これにより既存の「TabPFN は SCM を prior に使う」記述との矛盾を回避。
+- メモ: PFN/ICL の射程が予測（TabPFN）・最適化（PFNs4BO/GIT-BO）に続き**因果効果推定**へ届くことを示す論文。prior は OpenML 実表＋TabPFN v1 生成器を流用し ignorability を設計で保証、CEPO-PPD は原典リーマン分布と同型の 1024 ビンヒストグラム。data-prior 損失=前向き KL は [[bayesian-inference]] の償却の因果版。limitations: ignorability 検証不能・有限標本理論なし・大規模表で文脈長制約・二値処置のみ。
+
+## [2026-06-03] ingest | Do-PFN: In-Context Learning for Causal Effect Estimation
+
+- 取り込み: `raw/articles/Do-PFN_ In-Context Learning for Causal Effect Estimation.md`（ar5iv, arXiv:2506.06039, Robertson・Reuter・Guo・Hollmann・Hutter・Schölkopf / ELLIS Tübingen・MPI-IS・Cambridge・Freiburg・Prior Labs 2025）。ケース A。
+- 作成: [[sources/2025-do-pfn]], [[translations/2025-do-pfn]]
+- 更新: [[structural-causal-model]], [[prior-data-fitted-networks]], [[in-context-learning]], [[bayesian-inference]], [[tabular-foundation-model]], [[overview]], [[index]]
+- 翻訳範囲: **ユーザー指示により付録も含めて全訳**。本文 §1〜5 ＋ 付録 A〜D（A 命題証明〔前向き KL〕・B prior-fitting 詳細・C 実験詳細〔ケーススタディ構造方程式・評価指標・ベースライン〕・D 補足結果）。References は除外。Algorithm 1 は引用ブロックで訳出、表1は要約注記。
+- 画像: 全19図を ar5iv から取得し `raw/assets/2025-do-pfn/` に保存（`figures/` サブパスは `figures__` 前置でフラット化、`file` で妥当画像と確認、参照=保存=19枚一致）。本文 Fig1-7＝x1,x2,cid_rmse_groups_int,cate_rmse_groups,sales_cid,cate_rmse_sufficiency,treatment_weight。付録 Fig8-19＝x3,sales_cid_scatter,laws_cid_scatter,scatter_noise,cid_rmse_groups_dowhy,cate_rmse_groups_dowhy,cid_rmse_groups_obs,cid_rmse_groups_var,x4,entropy,Calibration__Observed_Confounder,bias_cid_top。取得失敗なし。
+- 概念粒度: 新規 concept ページは作らず既存5概念に統合（CLAUDE.md §1）。
+- **設計判断（重要・前回 CausalPFN との対比）**: Do-PFN は CausalPFN と**ほぼ同時期の姉妹研究**だが、立つ因果の枠組みが逆。Do-PFN＝**SCM／do 計算（Pearl）・因果グラフ不要・無交絡を要求しない・条件付き介入分布（CID）$p(y|do(t),x)$ を予測**。CausalPFN＝潜在結果（Rubin）・ignorability 要求・CATE/ATE。Do-PFN は**介入つき SCM を prior に据える**ため [[structural-causal-model]] に最も自然に収まる（CausalPFN より中心的）。同ページに両者の対比小節を追加。
+- メモ: アーキは TabPFN v2 とほぼ同一（730 万パラメータ＋先頭列＝処置の指示子）で軽量（RTX 2080 ×48h）。Algorithm 1 の NLL 最小化＝CID への前向き KL 最小化（命題1）。同定不能ケース（未観測交絡）でも「因果的痕跡」からもっともらしい解集合＋高エントロピーで不確実性を正しく表現。CATE はバイアス相殺で CID 単体より強い。limitations: prior 依存・同定可能性理論未整備・二値介入のみ・解釈可能性。著者は Hutter（TabPFN）＋Schölkopf（因果）。
+
+## [2026-06-03] ingest | Chronos-2: From Univariate to Universal Forecasting
+
+- 取り込み: `raw/articles/Chronos-2_ From Univariate to Universal Forecasting.md`（ar5iv, arXiv:2510.15821, Ansari ら / Amazon Web Services・Amazon・Freiburg・JKU Linz ほか 2025）。ケース A。
+- 作成: [[sources/2025-chronos-2]], [[translations/2025-chronos-2]]
+- 更新: [[in-context-learning]], [[tabular-foundation-model]], [[overview]], [[index]]
+- 翻訳範囲: **ユーザー指示により付録も含めて全訳**。本文 §1〜6 ＋ 付録 A（訓練データ表）・B（追加結果＝MASE/WQL/WAPE 表＋ペアワイズ比較図）。References・Acknowledgements は除外。能力比較表（表1）・結果表（表3-5）は訳出、長いデータセット羅列表（表6/10/11）と反復的な結果表（表7-9）は代表値＋原典参照の注記で要点保持。
+- 画像: 全19図を ar5iv から取得し `raw/assets/2025-chronos-2/`（x1,x2,x4,x7,x9,x11,x12,x13,x16,x19,x21,x23-x30）。`file` で妥当画像と確認、参照=保存=19枚一致。図の対応を Read で確認: x16/x19/x21 は x4/x7/x9（単変量/多変量/エネルギー共変量サブセット）の MASE 版。取得失敗なし。
+- **概念粒度の判断（重要）**: Chronos-2 は**時系列基盤モデル**で PFN そのものではない。新規 concept ページ（例: `time-series-foundation-model`）は**作らず**、接点の強い [[in-context-learning]]（group attention＝時系列版 ICL・クロス学習）と [[tabular-foundation-model]]（fev-bench で TabPFN-TS と競合・合成データ事前訓練の共通路線）に統合。**今後 TS 基盤モデルのソースが増えたら専用 concept ページ化を再検討**（→ ユーザーに提案候補）。
+- メモ: 中核は group attention（バッチ軸でグループ内系列の情報共有、$O(V)$ スケール）＝多変量・共変量つき予測をゼロショットで1モデル化。能力は合成データ（multivariatizer）由来で、合成のみ版が実データ混合版にほぼ並ぶ＝TabPFN 流「合成 prior」と共鳴。fev-bench/GIFT-Eval/Chronos Benchmark II で SOTA、共変量タスクで TabPFN-TS が2位。分位点回帰（21分位点・pinball）で確率予測、ベイズ的 PPD 枠組みは前面に出さない。表形式 TFM と時系列 FM が「ICL＋合成データ」へ収斂する好例として overview に追記。
+
+## [2026-06-04] schema-update | lint 修正（孤立ページ解消・overview 掘り下げ更新）
+
+- 点検: 58ページ全体を走査（dangling 0・frontmatter 裸 [[ 0・translation/source 対称 21↔21・概念粒度逸脱なし・日付整合）。
+- **孤立ページ解消**: [[questions/evaluating-pfn-gp-approximation]] → [[bayesian-inference]] と [[gaussian-process]] の関連ページに追加。[[questions/pfn-and-bayesian-optimization]] → [[bayesian-optimization]] の関連ページに追加。
+- **overview 掘り下げ更新**: 掘り下げ行に [[questions/riemann-distribution-buckets]]・[[questions/evaluating-pfn-gp-approximation]]・[[questions/pfn-and-bayesian-optimization]] の 3 件を追加（それまで 3 件のみだったところを 6 件に更新）。
+- 孤立ページ再チェック: 0 件（全 questions が1件以上の概念/sources から被リンク）。
+
+## [2026-06-06] ingest | nanoTabPFN: A Lightweight and Educational Reimplementation of TabPFN
+
+- 取り込み: `raw/articles/nanoTabPFN_ A Lightweight and Educational Reimplementation of TabPFN.md`（ar5iv, arXiv:2511.03634, Pfefferle・Hog・Purucker・Hutter / ELLIS Tübingen・Freiburg・Prior Labs 2025）。ケース A。
+- 作成: [[sources/2025-nanotabpfn]], [[translations/2025-nanotabpfn]]
+- 更新: [[prior-data-fitted-networks]], [[tabular-foundation-model]], [[index]]
+- 翻訳範囲: **ユーザー指示により付録も含めて全訳**。本文 §1・§3〜§5 ＋ 付録 A（詳細実験設定・HPO 探索空間）・付録 B（データセットごとの結果）。References・Disclaimer・Acknowledgement は除外。Figure 3（コード例）は data URI のダウンロードリンクなので画像非取得、引用ブロックで要旨を記載。
+- 画像: 4図（architecture.png / x1.png / roc_auc.png / summary.png）を ar5iv から取得し `raw/assets/2025-nanotabpfn/` に保存。全て妥当画像と確認。
+- **概念粒度**: nanoTabPFN は個別モデルなので専用 concept ページは作らず、[[prior-data-fitted-networks]] と [[tabular-foundation-model]] の「代表手法」節に統合（CLAUDE.md §1 規約）。
+- **設計判断**: tabular-foundation-model に「教育・軽量化（アクセシビリティの向上）」節を新設し nanoTabPFN を配置。蒸留（production 向け）と並ぶ「TFM を小さく・使いやすくする」軸として位置づけ。
+- メモ: 「nanoGPT の表形式版」というポジショニングが明快。500行コード・1分訓練・160,000倍速・単一 GPU。性能はあくまで小規模・教育向け（150データ×5特徴×2クラス）。訓練データ生成に TabICL の prior 実装を流用（[[sources/2025-tabicl]] との接点）。TabPFN 官製グループ（Hutter・Purucker）による TFM 民主化の贈り物。
+
+## [2026-06-06] ingest | ShapPFN: Real-Time Explanations for Tabular Foundation Models
+
+- 取り込み: `raw/articles/Real-Time Explanations for Tabular Foundation Models.md`（ar5iv, arXiv:2603.29946, Sena & Azevedo / Kunumi Institute・UFMG, Brazil 2026）。ケース A。当初 arxiv.org HTML 版（画像なし）だったが、ユーザーが ar5iv 版に差し替え。
+- 作成: [[sources/2026-shappfn]], [[translations/2026-shappfn]]
+- 更新: [[prior-data-fitted-networks]], [[tabular-foundation-model]], [[index]]
+- 翻訳範囲: **ユーザー指示により付録も含めて全訳**。本文 §1〜5 ＋ 付録 A（ハイパーパラメータの影響・逐次 HPO）。References・Disclaimer・Acknowledgement は除外。表1/2/3 は詳細数値を原典参照の注記＋要点で保持（巨大な per-dataset テーブル）。
+- **画像（特記）**: 図1（アーキ図）は ar5iv で **inline SVG（TikZ ベクター）**。ar5iv の assets PNG は「NO IMAGE AVAILABLE」プレースホルダーのみ（GIT-BO x1 と同型、3 URL とも同一 20498B）。→ inline SVG を抽出し `raw/assets/2026-shappfn/architecture.svg` に保存（xmlns 補完）。ただし SVG のラベルは foreignObject（HTML）で、Obsidian の `![]()` img 埋め込みでは描画されない。→ **Chrome ヘッドレス（`--headless=new --screenshot`、Google Chrome.app）で foreignObject 込みでラスタライズ**し `architecture.png`（1891×405）を生成。フォント縮小でラベルのはみ出しを軽減。cairosvg/rsvg/inkscape は未インストール＋foreignObject 非対応のため不可、ヘッドレスブラウザが唯一の解だった。
+- 概念粒度: ShapPFN は個別モデルなので専用 concept は作らず [[prior-data-fitted-networks]]（代表手法）と [[tabular-foundation-model]]（「説明可能性の内蔵」節）に統合。
+- メモ: **nanoTabPFN（[[sources/2025-nanotabpfn]]）を実研究の踏み台に使った最初の公開例**。ViaSHAP 流の Shapley 値回帰を PFN に統合し、予測を base+Σφ の加法形にして予測と説明を1順伝播で同時出力。KernelSHAP 610s→0.06s（1000倍超速）で一致 R²=0.96。SHAP 損失なしだと説明品質崩壊（R²=0.179）＝損失が鍵。「ベイズ推論を事前訓練に償却する PFN」の発想を**説明計算の償却**へ応用。予測性能は TabPFN v2（0.872）に及ばず（0.848）、二値分類・小特徴量に限定。

@@ -6,9 +6,12 @@ related:
   - "[[gaussian-process]]"
   - "[[bayesian-inference]]"
   - "[[tabular-foundation-model]]"
+  - "[[prior-data-fitted-networks]]"
 sources:
   - "[[sources/2018-bayesian-optimization-tutorial]]"
-updated: 2026-05-31
+  - "[[sources/2023-pfns4bo]]"
+  - "[[sources/2025-git-bo]]"
+updated: 2026-06-03
 ---
 
 # Bayesian Optimization（BayesOpt, ベイズ最適化）
@@ -38,7 +41,9 @@ EI は「サンプル点での改善」のみを価値とするのに対し、KG
 
 ## なぜ PFN の文脈で重要か
 
-1. **PFN の応用先（下流タスク）**　BayesOpt は「高速で較正のよい予測分布を出すサロゲート」を必要とする。標準の GP はサロゲートとして $O(N^3)$ のコストと次元の制約を抱える。**[[tabular-foundation-model]]（TabPFN 系）は 1 回の前向き計算で予測分布を返す**ため、GP の代わりのサロゲートになりうる。実際、高次元 BO の GIT-BO は TabPFNv2 をサロゲートに使い、TabPFN-3（[[sources/2026-tabpfn-3]]）のエコシステムでも BayesOpt は下流応用として挙がる。
+1. **PFN の応用先（下流タスク）— その正準的実体が PFNs4BO**　BayesOpt は「高速で較正のよい予測分布を出すサロゲート」を必要とする。標準の GP はサロゲートとして $O(N^3)$ のコストと次元の制約を抱える。**[[prior-data-fitted-networks]]（PFN）は 1 回の前向き計算で予測分布を返す**ため、GP の代わりのサロゲートになりうる。これを正面から実装したのが **PFNs4BO**（[[sources/2023-pfns4bo]]、PFN 原典と同じ著者グループ）で、PFN を GP の「ベイズ的ドロップイン置換」として BO に据え、固定 GP の事後をほぼ厳密に再現しつつ（EI/PI/UCB をリーマン分布から厳密計算）、HPO ベンチで GP ベースの SOTA（HEBO）を上回ることを示した。さらに**高次元（100〜500 次元）BO**では **GIT-BO**（[[sources/2025-git-bo]]）が TabPFN v2 をサロゲートに使う。固定基盤モデルは GP のようにカーネルを適応できないが、GIT-BO は **TabPFN の順伝播の勾配から“探索すべき低次元部分空間”を毎反復つくり直す**ことでこれを補い、GP ベース高次元 BO（SAASBO 等）を 2 桁速く凌駕した（PFNs4BO が低次元、GIT-BO が高次元、と棲み分く）。TabPFN-3（[[sources/2026-tabpfn-3]]）のエコシステムでも BayesOpt は下流応用として挙がる。
+
+   - **GP では難しい拡張が事前分布の設計だけで入る**: PFNs4BO は、最適解の位置のヒント（**ユーザー事前分布** $p(D|\rho,I)$）、出力に効かない**無関係次元**の無視、そして**獲得関数（知識勾配 KG）を直接学習する非近視眼的 BO** を、いずれも「事前分布を書いて一度訓練する」だけで実現する。GP/経験ベイズには組み込みにくいこれらが、PFN では自然に扱える点が本質的な利点。
 
 2. **GP を共有の土台にする**　BayesOpt のサロゲートも、PFN が**模倣・近似の対象**にするものも、ともに [[gaussian-process]] の事後予測分布（[[bayesian-inference]] の PPD）。Frazier §3 の GP 回帰は [[sources/2020-gp-regression-tutorial]] と同内容を「最適化に使う」視点で説明する。BayesOpt では PPD が**獲得関数の入力**になる。
 
@@ -50,5 +55,8 @@ EI は「サンプル点での改善」のみを価値とするのに対し、KG
 - [[bayesian-inference]] — 獲得関数が用いる事後予測分布（PPD）の枠組み
 - [[tabular-foundation-model]] — GP の代わりに使えるサロゲート候補（TabPFN を BO に応用）
 - [[prior-data-fitted-networks]] — 1 回の前向き計算で PPD を返す＝高速サロゲート
+- [[sources/2023-pfns4bo]] — PFN を GP の置換として BO に据えた正準的論文（ユーザー事前分布・無関係次元・非近視眼 KG）
+- [[sources/2025-git-bo]] — TabPFNv2 を高次元 BO サロゲートに（順伝播の勾配で能動部分空間を毎反復同定、最大500次元で SOTA）
 - [[sources/2018-bayesian-optimization-tutorial]] — 本概念のリファレンス（Frazier のチュートリアル）
 - [[sources/2020-gp-regression-tutorial]] — サロゲートに使う GP 回帰の入門
+- [[questions/pfn-and-bayesian-optimization]] — PFN と BO の関係（BO のサロゲートを GP→PFN に差し替える）初心者向け図解
