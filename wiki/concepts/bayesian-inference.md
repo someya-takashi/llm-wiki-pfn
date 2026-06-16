@@ -10,7 +10,10 @@ sources:
   - "[[sources/2022-tabpfn]]"
   - "[[sources/2025-causalpfn]]"
   - "[[sources/2025-do-pfn]]"
-updated: 2026-06-03
+  - "[[sources/2024-bayesian-inference-step-by-step]]"
+  - "[[sources/2020-understanding-bayesian-inference]]"
+  - "[[sources/2021-mcmc-explained]]"
+updated: 2026-06-16
 ---
 
 # Bayesian Inference と事後予測分布（PPD）
@@ -18,6 +21,8 @@ updated: 2026-06-03
 ## 一言で
 
 **ベイズ推論（Bayesian inference）**は、「データを見る前の信念（事前分布）」を「データを見た後の信念（事後分布）」へ更新する枠組み。教師あり学習で実際に欲しいのは、未知のテスト点 $x$ のラベル分布を、訓練データ $D_{train}$ を条件として求めること —— これを **事後予測分布（PPD; Posterior Predictive Distribution）** と呼ぶ。[[prior-data-fitted-networks]]（PFN）が近似しようとしている当のターゲットがこの PPD である。
+
+> 土台の入門（MLE との対比・ベイズ則・共役事前・逐次更新の手計算）は [[sources/2024-bayesian-inference-step-by-step]] を参照。本ページはその「パラメータ $\theta$ の事後」の一歩先、すなわち $\theta$ を積分消去した **PPD と、その償却近似** に焦点を当てる。
 
 ## PPD の定義と計算困難性
 
@@ -31,7 +36,7 @@ $$
 - $p(D\mid\phi)$: その仮説のもとでの観測データの**尤度**。
 - 直感的には「データをうまく説明し、かつ事前にもっともらしい仮説」ほど重く効く、無限個の仮説にわたる加重平均。
 
-この積分は仮説空間が巨大なためふつう解析的に解けず、MCMC や変分推論などで近似されてきた。いずれもデータセットごとに高コスト。
+この積分は仮説空間が巨大なためふつう解析的に解けず、MCMC や変分推論などで近似されてきた。いずれもデータセットごとに高コスト。予測分布（PPD）の積分形・近似推論（MCMC/変分/期待値伝播）・正規化定数を無視するトリックの初学者向け解説は [[sources/2020-understanding-bayesian-inference]] が丁寧。その近似推論の代表 **MCMC（マルコフ連鎖モンテカルロ）** の中身——定常分布・詳細釣り合い・Metropolis–Hastings で正規化定数を計算せず事後からサンプルする仕組み——は [[sources/2021-mcmc-explained]] が解説する。PFN はこの反復サンプリングを順伝播1回に償却し、PFN 原典は MCMC（NUTS）比 1000〜10000 倍速を達成した。
 
 ## 償却（amortization）という発想
 
@@ -56,3 +61,6 @@ $$
 - [[sources/2025-do-pfn]] — 償却の対象を条件付き介入分布（CID）に置いた例（do 計算・前向き KL 最適）
 - [[questions/pfn-paper-and-gaussian-process]] — PPD を厳密に解ける GP を物差しに PFN を検証した話・出力の仕組み
 - [[questions/evaluating-pfn-gp-approximation]] — PFN の GP 近似を定量評価する指標（KL・RMSE・被覆率・CRPS）
+- [[sources/2024-bayesian-inference-step-by-step]] — ベイズ推論の入門（MLE との対比・ベイズ則・共役事前・逐次更新）
+- [[sources/2020-understanding-bayesian-inference]] — ベイズ推論を ML パラダイムとして説く入門（予測分布 PPD ＋近似推論 MCMC/VI/EP まで）
+- [[sources/2021-mcmc-explained]] — 近似推論の代表 MCMC の深掘り（定常分布・詳細釣り合い・Metropolis–Hastings・burn-in）

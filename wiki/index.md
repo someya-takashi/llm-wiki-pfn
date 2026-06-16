@@ -36,6 +36,9 @@
 - [[sources/2025-chronos-2]] — Chronos-2: 単変量から普遍的予測へ（Ansari et al. 2025, Amazon, arXiv 2510.15821）。時系列基盤モデル。group attention＝時系列版 ICL で多変量・共変量つき予測をゼロショット
 - [[sources/2025-nanotabpfn]] — nanoTabPFN: TabPFN の軽量かつ教育的な再実装（Pfefferle et al. 2025, Freiburg/Prior Labs, arXiv 2511.03634）。500行・1分・単一 GPU で従来 ML ベースラインに並ぶ nanoGPT 流の教育ツール
 - [[sources/2026-shappfn]] — ShapPFN: 表形式基盤モデルのためのリアルタイム説明（Sena & Azevedo 2026, Kunumi/UFMG, arXiv 2603.29946）。nanoTabPFN に Shapley 値説明を内蔵し予測と説明を1順伝播で（KernelSHAP 1000倍速）
+- [[sources/2024-bayesian-inference-step-by-step]] — ベイズ推論ステップバイステップ入門（Rahuldhrh 2024, Medium）。MLEの限界→事前/事後→共役事前→逐次更新。[[bayesian-inference]] の基礎入門
+- [[sources/2020-understanding-bayesian-inference]] — ベイズ推論を機械学習パラダイムとして説く入門（Jonty Sinai 2020）。予測分布(PPD)＋近似推論(MCMC/VI/EP)まで到達。[[bayesian-inference]] の入門
+- [[sources/2021-mcmc-explained]] — MCMC の入門解説（Shivam Agrahari 2021, TDS）。モンテカルロ＋マルコフ連鎖→定常分布→詳細釣り合い→Metropolis–Hastings。[[bayesian-inference]] の近似推論を深掘り
 
 ## Translations
 
@@ -62,6 +65,9 @@
 - [[translations/2025-chronos-2]] — Chronos-2 の翻訳（本文 §1〜6 ＋ 付録 A〜B、全19図・主要テーブル）
 - [[translations/2025-nanotabpfn]] — nanoTabPFN の翻訳（本文 §1・3〜5 ＋ 付録 A〜B、全4図）
 - [[translations/2026-shappfn]] — ShapPFN の翻訳（本文 §1〜5 ＋ 付録 A、図1＝アーキ図）
+- [[translations/2024-bayesian-inference-step-by-step]] — ベイズ推論入門記事の全文翻訳（本文、数式図24枚をローカル保存）
+- [[translations/2020-understanding-bayesian-inference]] — 「ベイズ推論を理解する」の全文翻訳（本文、図解8枚ローカル保存）
+- [[translations/2021-mcmc-explained]] — MCMC 解説記事の全文翻訳（本文＋Extras、図/数式21枚ローカル保存）
 
 ## Concepts
 
@@ -100,3 +106,4 @@
 - [[questions/riemann-distribution-buckets]] — リーマン分布のバケット／prior-data とは（回帰を等確率バケットの分類に変える PFN の回帰ヘッド・図解）
 - [[questions/evaluating-pfn-gp-approximation]] — PFN の GP 近似を定量評価する指標（KL/平均・信頼幅RMSE/被覆率/CRPS）とプロトコル
 - [[questions/pfn-and-bayesian-optimization]] — PFN とベイズ最適化の関係（BO のサロゲートを GP→PFN に差し替える）初心者向け解説・図解
+- [[questions/pfn-bayesian-inference-evaluation-settings]] — PFN のベイズ推論精度を評価できる問題設定（GP以外の例＋共役/グリッド/SCM/MCMC で自前評価）

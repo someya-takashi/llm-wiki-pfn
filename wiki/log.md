@@ -439,3 +439,45 @@
 - **画像（特記）**: 図1（アーキ図）は ar5iv で **inline SVG（TikZ ベクター）**。ar5iv の assets PNG は「NO IMAGE AVAILABLE」プレースホルダーのみ（GIT-BO x1 と同型、3 URL とも同一 20498B）。→ inline SVG を抽出し `raw/assets/2026-shappfn/architecture.svg` に保存（xmlns 補完）。ただし SVG のラベルは foreignObject（HTML）で、Obsidian の `![]()` img 埋め込みでは描画されない。→ **Chrome ヘッドレス（`--headless=new --screenshot`、Google Chrome.app）で foreignObject 込みでラスタライズ**し `architecture.png`（1891×405）を生成。フォント縮小でラベルのはみ出しを軽減。cairosvg/rsvg/inkscape は未インストール＋foreignObject 非対応のため不可、ヘッドレスブラウザが唯一の解だった。
 - 概念粒度: ShapPFN は個別モデルなので専用 concept は作らず [[prior-data-fitted-networks]]（代表手法）と [[tabular-foundation-model]]（「説明可能性の内蔵」節）に統合。
 - メモ: **nanoTabPFN（[[sources/2025-nanotabpfn]]）を実研究の踏み台に使った最初の公開例**。ViaSHAP 流の Shapley 値回帰を PFN に統合し、予測を base+Σφ の加法形にして予測と説明を1順伝播で同時出力。KernelSHAP 610s→0.06s（1000倍超速）で一致 R²=0.96。SHAP 損失なしだと説明品質崩壊（R²=0.179）＝損失が鍵。「ベイズ推論を事前訓練に償却する PFN」の発想を**説明計算の償却**へ応用。予測性能は TabPFN v2（0.872）に及ばず（0.848）、二値分類・小特徴量に限定。
+
+## [2026-06-16] query | PFN のベイズ推論精度を評価できる問題設定
+
+- 質問: PFN のベイズ推論精度を評価したい。原典は固定 GP で評価していたが、(a) GP 以外の例はあるか、(b) 自前で評価できる問題設定はあるか。
+- 参照: [[sources/2021-transformers-can-do-bayesian-inference]], [[sources/2025-do-pfn]], [[sources/2025-causalpfn]], [[sources/2023-pfns4bo]], [[sources/2026-tabicl-v2]], [[sources/2025-mitra]], [[questions/evaluating-pfn-gp-approximation]], [[questions/pfn-paper-and-gaussian-process]], [[bayesian-inference]]
+- 作成: [[questions/pfn-bayesian-inference-evaluation-settings]]
+- 更新: [[index]]
+- メモ: 既存 [[questions/evaluating-pfn-gp-approximation]]（評価“指標”）の対として、「どんな問題設定なら“正解の事後”が手に入るか」という設定側のカタログを新設。(a) wiki 内の GP 以外の評価例＝原典の GP-hyperprior（NUTS基準）・BNN（SVI/NUTS基準）・分類ECE、Do-PFN/CausalPFN（合成 SCM の真の CID/CATE）、PFNs4BO（尤度）、TabICLv2/Mitra（CRPS）。(b) 自前設定＝(A)共役ベイズ（ベイズ線形回帰=第一推奨/Beta-Bernoulli/Normal-Normal/Gamma-Poisson/Dirichlet-Multinomial）、(B)分類のベイズ最適事後（既知ガウス混合）、(C)低次元グリッド積分、(D)合成 SCM、(E)収束 NUTS をゴールドスタンダードに。指標は既存ページへ委譲し重複回避。
+
+## [2026-06-16] ingest | Bayesian Inference: A step-by-step guide
+
+- 取り込み: `raw/articles/Bayesian Inference A step-by-step guide.md`（Rahuldhrh, Medium, 2024-06-05）。ケース C（Web 記事）。ベイズ推論の入門解説。
+- 作成: [[sources/2024-bayesian-inference-step-by-step]], [[translations/2024-bayesian-inference-step-by-step]]
+- 更新: [[bayesian-inference]]（sources 追加＋土台への橋渡し1文＋関連ページ）, [[questions/pfn-bayesian-inference-evaluation-settings]]（共役例の手計算リンク）, [[index]]
+- 翻訳範囲: 本文全体（intro / Bayesian Inference / Review of Parametric Statistical Inference / General Idea / Example / Iterative learning / Conclusion）。**購読誘導「Get Rahuldhrh's stories in your inbox」は本文非該当として除外**。references/acknowledgments なし。
+- 画像（ケース C・**全図ローカル保存**）: 本文の Medium 画像24枚を `raw/assets/2024-bayesian-inference-step-by-step/` に取得（rule 4: URL から `format:webp/` を外し原 PNG を取得）。`fig01〜fig24` の連番＋内容名。全て `file` で妥当 PNG 確認・参照数＝保存数一致。**装飾カバー banner（L12 jpeg）のみ rule 3 で除外**。図はほぼ全て「Medium が数式を画像レンダリングしたもの」＝ベイズ則・ベルヌーイ尤度・ベータ事前・正規事後など標準式＋例1/例2 の事後プロット2枚。各 `<figcaption>` に Unicode 添字で式内容を補足。取得失敗なし。
+- 概念粒度: 新概念ページは作らず既存 [[bayesian-inference]] に統合（記事は個別手法でなく入門解説）。
+- PFN 接続メモ: 記事は θ の事後と MAP 止まりで PPD まで届かない点を限界として明示。共役の2例（Beta–Bernoulli コイン投げ→Beta(8,4)、Normal–Normal 正規平均→𝒩(68.121,0.869)）が [[questions/pfn-bayesian-inference-evaluation-settings]] の「閉形式で厳密事後が出る自前の物差し」と一致。逐次ベイズ更新を ICL の「文脈にデータを足すほど締まる」挙動と対応づけ。
+
+## [2026-06-16] ingest | Understanding Bayesian Inference
+
+- 取り込み: `raw/articles/Understanding Bayesian Inference.md`（Jonty Sinai, jontysinai.github.io, 2020-04-19）。ケース C（Web 記事・Jekyll 個人ブログ）。ベイズ推論を「機械学習パラダイム」として説く入門。
+- 作成: [[sources/2020-understanding-bayesian-inference]], [[translations/2020-understanding-bayesian-inference]]
+- 更新: [[bayesian-inference]]（sources 追加＋計算困難性/近似推論への橋渡し1文＋関連ページ）, [[sources/2024-bayesian-inference-step-by-step]]（姉妹入門として相互リンク）, [[index]]
+- 翻訳範囲: 本文全体（The Real World / Bayes' Theorem / Meets the Real World / Approximate Inference〔Chicken and Egg 含む〕/ Unravelling the graph / Tying it back together〔3 paradigm〕/ Bonus: Information Theory）。**末尾「Photo by Dattatreya Patra on Unsplash」クレジットは除外**。references/acknowledgments なし。
+- 画像（ケース C・**全図ローカル保存8枚**）: `raw/assets/2020-understanding-bayesian-inference/` に取得（jontysinai.github.io 直リンク、元アセット名保持）。全て手描き風の**図解**（数式画像ではない＝本文は MathJax の inline LaTeX）。`function_x_to_y` / `function_x_to_y_with_theta` / `posterior_over_theta` / `posterior_estimation_with_theta` / `bayesian_inference_graph_cyclic` / `approximate_inference_graph` / `compression_with_theta` / `compression_with_posterior`。`file` で妥当 PNG 確認・参照数＝保存数(8)一致。取得失敗なし。
+- **翻訳の注記**: Web Clipper が壊した LaTeX（`\left{\right.` 等）を正しい LaTeX に整形して `$...$`/`$$...$$` で記載（画像と食い違う式は作らず、本文の式を整形しただけ）。
+- **環境メモ**: 画像 DL 時、curl を含む外部コマンドが PATH 欠落で「command not found」になる事象が発生。`/usr/bin/curl`・`/bin/ls` 等の**絶対パス**で実行して回避（次回も DL は絶対パス推奨）。
+- 概念粒度: 新概念ページは作らず既存 [[bayesian-inference]] に統合（入門解説のため）。
+- PFN 接続メモ: 記事は予測分布 PPD（θ を事後で積分消去）まで到達し、その計算困難性ゆえ近似推論 MCMC/VI/EP が要ると説く＝PFN が償却で置き換える計算そのもの。前ソース [[sources/2024-bayesian-inference-step-by-step]]（θ 事後＋MAP 止まり）との役割分担を明示。証拠 P(𝒟) が解けない点は PFN 原典 [[sources/2021-transformers-can-do-bayesian-inference]] の動機と一致。
+
+## [2026-06-16] ingest | Monte Carlo Markov Chain (MCMC) explained
+
+- 取り込み: `raw/articles/Monte Carlo Markov Chain (MCMC) explained.md`（Shivam Agrahari, Towards Data Science, 2021-07-27）。ケース C（Web 記事）。MCMC の入門解説。
+- 作成: [[sources/2021-mcmc-explained]], [[translations/2021-mcmc-explained]]
+- 更新: [[bayesian-inference]]（sources 追加＋MCMC 深掘りへの橋渡し＋関連ページ）, [[sources/2020-understanding-bayesian-inference]]（相互リンク）, [[questions/pfn-bayesian-inference-evaluation-settings]]（(E) NUTS の仕組みへリンク）, [[index]]
+- 翻訳範囲: 本文全体（Sampling / Introduction / Monte Carlo / Markov Chains / Stationary Distribution / MCMC / Metropolis–Hastings / Conclusion）。**著者が「飛ばしてよい」と注記した Extras 小節も本文として訳出**（2か所: 収束の Goodfellow 本引用・正規化定数/分配関数の補足）。**Python コードブロックは原文のまま保持**。references/acknowledgments なし。
+- 画像（ケース C・**全図ローカル保存21枚**）: `raw/assets/2021-mcmc-explained/` に取得（towardsdatascience.com/wp-content 直リンク、document 順の内容名 01〜21）。曲線下面積・状態遷移図・提案分布・burn-in などの**図**と、期待値/マルコフ性/詳細釣り合い/Metropolis–Hastings 導出などの**数式画像**が混在。`file` で妥当画像確認。**詳細釣り合いの図は本文中2か所で同一 URL → 1ファイル(14-detailed-balance.png)を両所から参照**。**装飾カバー（Pixabay 写真）のみ rule 3 で除外**。取得失敗なし。
+- **DL 環境メモ**: 前回同様 curl が PATH 欠落で落ちる事象に備え、最初から `/usr/bin/curl`・`/bin/ls`・`/usr/bin/file` 等の**絶対パス**で実行（成功）。
+- 画像方針: 数式多めの Web 記事に対する「ケース C 通り全図ローカル保存」は、直前の [[sources/2024-bayesian-inference-step-by-step]] ingest でユーザーが確定した方針を踏襲（再質問せず）。
+- 概念粒度: 新概念ページは作らず既存 [[bayesian-inference]] の「近似推論の代表 MCMC」として統合（schema 規律。markov-chain/monte-carlo の個別概念ページは作らない）。
+- PFN 接続メモ: MCMC＝PFN が償却で置き換える近似推論の代表。PFN 原典 [[sources/2021-transformers-can-do-bayesian-inference]] の速度比較相手 NUTS（HMC ベース MCMC）に対し PFN は 1000〜10000 倍速。詳細釣り合いの「正規化定数 Z を消す」は [[sources/2020-understanding-bayesian-inference]] の正規化定数トリックと同一。[[questions/pfn-bayesian-inference-evaluation-settings]] の「収束 NUTS を物差しに」の中身。
