@@ -39,6 +39,7 @@
 - [[sources/2024-bayesian-inference-step-by-step]] — ベイズ推論ステップバイステップ入門（Rahuldhrh 2024, Medium）。MLEの限界→事前/事後→共役事前→逐次更新。[[bayesian-inference]] の基礎入門
 - [[sources/2020-understanding-bayesian-inference]] — ベイズ推論を機械学習パラダイムとして説く入門（Jonty Sinai 2020）。予測分布(PPD)＋近似推論(MCMC/VI/EP)まで到達。[[bayesian-inference]] の入門
 - [[sources/2021-mcmc-explained]] — MCMC の入門解説（Shivam Agrahari 2021, TDS）。モンテカルロ＋マルコフ連鎖→定常分布→詳細釣り合い→Metropolis–Hastings。[[bayesian-inference]] の近似推論を深掘り
+- [[sources/2019-conceptual-intro-mcmc]] — MCMC の概念的入門（Joshua Speagle 2019, arXiv 1909.12313）。グリッド→重点サンプリング→MCMC、ESS・自己相関・次元の呪い・typical set まで。[[bayesian-inference]] 近似推論の厳密版
 
 ## Translations
 
@@ -68,6 +69,7 @@
 - [[translations/2024-bayesian-inference-step-by-step]] — ベイズ推論入門記事の全文翻訳（本文、数式図24枚をローカル保存）
 - [[translations/2020-understanding-bayesian-inference]] — 「ベイズ推論を理解する」の全文翻訳（本文、図解8枚ローカル保存）
 - [[translations/2021-mcmc-explained]] — MCMC 解説記事の全文翻訳（本文＋Extras、図/数式21枚ローカル保存）
+- [[translations/2019-conceptual-intro-mcmc]] — MCMC 概念的入門論文の全文翻訳（本文§1〜9＋演習、図解15枚ローカル保存）
 
 ## Concepts
 

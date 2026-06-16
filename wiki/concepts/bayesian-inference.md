@@ -13,6 +13,7 @@ sources:
   - "[[sources/2024-bayesian-inference-step-by-step]]"
   - "[[sources/2020-understanding-bayesian-inference]]"
   - "[[sources/2021-mcmc-explained]]"
+  - "[[sources/2019-conceptual-intro-mcmc]]"
 updated: 2026-06-16
 ---
 
@@ -36,7 +37,7 @@ $$
 - $p(D\mid\phi)$: その仮説のもとでの観測データの**尤度**。
 - 直感的には「データをうまく説明し、かつ事前にもっともらしい仮説」ほど重く効く、無限個の仮説にわたる加重平均。
 
-この積分は仮説空間が巨大なためふつう解析的に解けず、MCMC や変分推論などで近似されてきた。いずれもデータセットごとに高コスト。予測分布（PPD）の積分形・近似推論（MCMC/変分/期待値伝播）・正規化定数を無視するトリックの初学者向け解説は [[sources/2020-understanding-bayesian-inference]] が丁寧。その近似推論の代表 **MCMC（マルコフ連鎖モンテカルロ）** の中身——定常分布・詳細釣り合い・Metropolis–Hastings で正規化定数を計算せず事後からサンプルする仕組み——は [[sources/2021-mcmc-explained]] が解説する。PFN はこの反復サンプリングを順伝播1回に償却し、PFN 原典は MCMC（NUTS）比 1000〜10000 倍速を達成した。
+この積分は仮説空間が巨大なためふつう解析的に解けず、MCMC や変分推論などで近似されてきた。いずれもデータセットごとに高コスト。予測分布（PPD）の積分形・近似推論（MCMC/変分/期待値伝播）・正規化定数を無視するトリックの初学者向け解説は [[sources/2020-understanding-bayesian-inference]] が丁寧。その近似推論の代表 **MCMC（マルコフ連鎖モンテカルロ）** の中身——定常分布・詳細釣り合い・Metropolis–Hastings で正規化定数を計算せず事後からサンプルする仕組み——は [[sources/2021-mcmc-explained]] が解説する。さらに「**欲しいのは事後そのものでなく事後上の積分（期待値）**」という視点と、**次元の呪い・typical set（事後質量が薄い殻に集中）**が per-dataset の MCMC を高コストにする理由までの厳密な解説は [[sources/2019-conceptual-intro-mcmc]] にある。PFN はこの反復サンプリングを順伝播1回に償却し、PFN 原典は MCMC（NUTS）比 1000〜10000 倍速を達成した。
 
 ## 償却（amortization）という発想
 
@@ -64,3 +65,4 @@ $$
 - [[sources/2024-bayesian-inference-step-by-step]] — ベイズ推論の入門（MLE との対比・ベイズ則・共役事前・逐次更新）
 - [[sources/2020-understanding-bayesian-inference]] — ベイズ推論を ML パラダイムとして説く入門（予測分布 PPD ＋近似推論 MCMC/VI/EP まで）
 - [[sources/2021-mcmc-explained]] — 近似推論の代表 MCMC の深掘り（定常分布・詳細釣り合い・Metropolis–Hastings・burn-in）
+- [[sources/2019-conceptual-intro-mcmc]] — MCMC の厳密・包括版（事後上の積分・重点サンプリング・ESS・次元の呪い・typical set）

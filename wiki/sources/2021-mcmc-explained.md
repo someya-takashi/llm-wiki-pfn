@@ -87,6 +87,7 @@ $$
 - [[prior-data-fitted-networks]] — MCMC の反復サンプリングを順伝播1回に償却する枠組み
 - [[sources/2021-transformers-can-do-bayesian-inference]] — PFN 原典。NUTS（MCMC）比 1000〜10000 倍速を実証
 - [[sources/2020-understanding-bayesian-inference]] — 近似推論（MCMC/VI）を高レベルで導入。本記事はその MCMC を深掘り
+- [[sources/2019-conceptual-intro-mcmc]] — 同じ MCMC の厳密・包括版（重点サンプリング・ESS・自己相関・次元の呪い・typical set・アンサンブル法）
 - [[sources/2024-bayesian-inference-step-by-step]] — ベイズ則・共役の入門（事後が閉形式で出る例）。MCMC は閉形式が無い場合の道具
 - [[questions/pfn-bayesian-inference-evaluation-settings]] — 「収束 NUTS をゴールドスタンダードに」＝MCMC を PFN 精度の物差しに
 - [[translations/2021-mcmc-explained]] — 本記事の全文翻訳

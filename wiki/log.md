@@ -481,3 +481,13 @@
 - 画像方針: 数式多めの Web 記事に対する「ケース C 通り全図ローカル保存」は、直前の [[sources/2024-bayesian-inference-step-by-step]] ingest でユーザーが確定した方針を踏襲（再質問せず）。
 - 概念粒度: 新概念ページは作らず既存 [[bayesian-inference]] の「近似推論の代表 MCMC」として統合（schema 規律。markov-chain/monte-carlo の個別概念ページは作らない）。
 - PFN 接続メモ: MCMC＝PFN が償却で置き換える近似推論の代表。PFN 原典 [[sources/2021-transformers-can-do-bayesian-inference]] の速度比較相手 NUTS（HMC ベース MCMC）に対し PFN は 1000〜10000 倍速。詳細釣り合いの「正規化定数 Z を消す」は [[sources/2020-understanding-bayesian-inference]] の正規化定数トリックと同一。[[questions/pfn-bayesian-inference-evaluation-settings]] の「収束 NUTS を物差しに」の中身。
+
+## [2026-06-16] ingest | A Conceptual Introduction to Markov Chain Monte Carlo Methods
+
+- 取り込み: `raw/articles/A Conceptual Introduction to Markov Chain Monte Carlo Methods.md`（Joshua S. Speagle, arXiv 1909.12313, ar5iv 版）。**ケース A（arXiv/ar5iv）**。dynesty 作者による MCMC の厳密・包括チュートリアル。
+- 作成: [[sources/2019-conceptual-intro-mcmc]], [[translations/2019-conceptual-intro-mcmc]]
+- 更新: [[bayesian-inference]]（sources 追加＋「事後上の積分」「次元の呪い・typical set」橋渡し＋関連ページ）, [[sources/2021-mcmc-explained]]（厳密版として相互リンク）, [[questions/pfn-bayesian-inference-evaluation-settings]]（収束/ESS の裏付けへリンク）, [[index]]
+- 翻訳範囲: **本文 §1〜§9 全訳＋各 Exercise 小節も全訳**（Noisy Mean / Grids over 2-D Gaussian / Importance Sampling / MCMC over 2-D Gaussian 等。appendix でなく本文中の演習）。**§Acknowledgements・参考文献 [^N] は除外**。本文の `<sup>N</sup>` 脚注マーカーは脚注本体が無いため除去。数式は inline LaTeX を維持し、ar5iv のレンダリング崩れ（`$00$`→`$0$` 等）を整形。
+- 画像（ケース A・全図 DL 必須・15枚）: `raw/assets/2019-conceptual-intro-mcmc/` に ar5iv assets から取得（絶対パス DL）。**図番号で保存（figure-01〜figure-15）。ソース名と図番号が食い違う2件に注意: Figure 9 ← fig10.png、Figure 10 ← fig9.png**（Read で内容確認済み: figure-09=MH accept/reject、figure-10=自己相関）。全15枚 `file` で妥当 PNG・参照数＝保存数一致。取得失敗なし。
+- 概念粒度: 新概念ページは作らず既存 [[bayesian-inference]] に統合（近似推論の厳密資料。schema 規律）。
+- PFN 接続メモ: §3.3 の事後予測 P(D̃|D)=∫P(D̃|Θ)P(Θ|D)dΘ＝PFN の近似ターゲット PPD。核心命題「欲しいのは事後そのものでなく事後上の積分（期待値）」＝PFN が順伝播で出す量。次元の呪い・typical set（事後質量が半径√dσ の薄い殻に集中）・自己相関が per-dataset MCMC を高コストにする＝PFN が事前訓練に償却して回避する相手。PFN 原典の比較相手 NUTS（HMC ベース MCMC）の内部メカニズム（なぜ遅いか）を与える。[[sources/2021-mcmc-explained]] の厳密版。

@@ -185,6 +185,8 @@
   },
   "active": "72538caf1a7e8fc3",
   "lastOpenFiles": [
+    "wiki/sources/2019-conceptual-intro-mcmc.md",
+    "wiki/translations/2019-conceptual-intro-mcmc.md",
     "raw/assets/2019-conceptual-intro-mcmc/figure-15.png",
     "raw/assets/2019-conceptual-intro-mcmc/figure-14.png",
     "raw/assets/2019-conceptual-intro-mcmc/figure-13.png",
@@ -195,7 +197,6 @@
     "raw/assets/2019-conceptual-intro-mcmc/figure-08.png",
     "raw/assets/2019-conceptual-intro-mcmc/figure-07.png",
     "raw/assets/2019-conceptual-intro-mcmc/figure-06.png",
-    "raw/assets/2019-conceptual-intro-mcmc/figure-05.png",
     "raw/assets/2019-conceptual-intro-mcmc",
     "raw/articles/A Conceptual Introduction to Markov Chain Monte Carlo Methods.md",
     "wiki/sources/2021-mcmc-explained.md",
@@ -229,7 +230,6 @@
     "raw/assets/2025-chronos-2",
     "wiki/sources/2025-do-pfn.md",
     "wiki/translations/2025-do-pfn.md",
-    "raw/articles/Chronos-2_ From Univariate to Universal Forecasting.md",
-    "raw/articles/Do-PFN_ In-Context Learning for Causal Effect Estimation.md"
+    "raw/articles/Chronos-2_ From Univariate to Universal Forecasting.md"
   ]
 }
