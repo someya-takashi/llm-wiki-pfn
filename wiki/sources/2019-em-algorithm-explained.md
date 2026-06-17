@@ -82,5 +82,6 @@ $\log$ が凹（2階微分 $-1/x^2<0$）なので**イェンセンの不等式**
 - [[prior-data-fitted-networks]] — per-dataset の反復推論を順伝播1回に償却
 - [[sources/2021-transformers-can-do-bayesian-inference]] — PFN 原典。損失＝事後予測への前向き KL 最小化
 - [[sources/2020-gmm-overview]] — GMM 文脈での EM 導出
+- [[sources/2022-em-by-examples]] — EM の3実例（K-Means・Two Coins・GMM）の実装チュートリアル
 - 参考（外部）: Carl Rasmussen 講義ノート（mlg.eng.cam.ac.uk）、Andrew Ng cs229 notes8（EM の標準的解説）
 - [[translations/2019-em-algorithm-explained]] — 本記事の全文翻訳

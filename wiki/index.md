@@ -46,6 +46,9 @@
 - [[sources/2025-gmm-sklearn-guide]] — GMM の sklearn 実装ガイド（Lakhan Bukkawar 2025, GoPenAI）。soft/hard 比較・顧客セグメンテーション・BIC/AIC で成分数選択。[[gaussian-mixture-model]] の実践版
 - [[sources/2020-gmm-overview]] — GMM の理論的概観（Patacchiola 2020, MML 第11章ベース）。潜在変数→責任=事後→非識別可能性→鶏と卵の EM 導出。[[gaussian-mixture-model]] の理論リファレンス
 - [[sources/2019-em-algorithm-explained]] — EM アルゴリズムの解説（Chloe Bi 2019, Medium）。下界=ELBO・Jensen・KL・座標上昇で「なぜ収束するか」。[[expectation-maximization]] の一次資料
+- [[sources/2014-no-u-turn-sampler]] — No-U-Turn Sampler の原典（Hoffman & Gelman 2014, JMLR）。HMC の L を U ターン基準＋双対平均化で自動化＝turnkey。Stan の中核、PFN 原典の速度比較相手。[[markov-chain-monte-carlo]] の HMC/NUTS 一次資料
+- [[sources/2017-conceptual-intro-hmc]] — HMC の幾何学的基礎（Betancourt 2017, arXiv 1701.02434）。typical set から HMC を必然として導き、E-BFMI・発散で診断。NUTS 原典の Why。[[markov-chain-monte-carlo]] の理論的基礎
+- [[sources/2022-em-by-examples]] — EM を3例で理解（Clarice Wang 2022, Medium）。K-Means・Two Coins（二項混合）・GMM を同じ EM として統一。[[expectation-maximization]] の実例集
 
 ## Translations
 
@@ -82,6 +85,9 @@
 - [[translations/2025-gmm-sklearn-guide]] — GMM sklearn ガイドの全文翻訳（本文＋sklearn コード、図5枚ローカル保存）
 - [[translations/2020-gmm-overview]] — GMM 理論概観の全文翻訳（導出＋numpy 実装、図2枚ローカル保存）
 - [[translations/2019-em-algorithm-explained]] — EM 解説記事の全文翻訳（下界導出、図8枚ローカル保存）
+- [[translations/2014-no-u-turn-sampler]] — NUTS 原典の全文翻訳（本文§1〜5＋アルゴリズム、図解12枚ローカル保存）
+- [[translations/2017-conceptual-intro-hmc]] — HMC 概念的入門の全文翻訳（序〜§7＋付録A、図43枚ローカル保存）
+- [[translations/2022-em-by-examples]] — EM 実例集の全文翻訳（K-Means/Two Coins/GMM、図21枚ローカル保存）
 
 ## Concepts
 
@@ -128,3 +134,6 @@
 - [[questions/pfn-and-bayesian-optimization]] — PFN とベイズ最適化の関係（BO のサロゲートを GP→PFN に差し替える）初心者向け解説・図解
 - [[questions/pfn-bayesian-inference-evaluation-settings]] — PFN のベイズ推論精度を評価できる問題設定（GP以外の例＋共役/グリッド/SCM/MCMC で自前評価）
 - [[questions/posterior-vs-posterior-predictive]] — 事後分布と事後予測分布の違い（パラメータの分布 vs 次データの分布、比較表＋コイン/温度の例＋PFN接続）
+- [[questions/mcmc-intuitive-explainer]] — MCMC を数式の気持ち（マス目/乱点/散歩者/オレンジの皮）で直感解説。2019-conceptual-intro-mcmc の噛み砕き
+- [[questions/hmc-nuts-intuitive-explainer]] — HMC と NUTS を数式の気持ち（惑星と衛星/転がるボール/Uターン/温度調節）で直感解説。2017-conceptual-intro-hmc と NUTS 原典の噛み砕き
+- [[questions/evaluating-pfn-with-known-gmm]] — 既知 GMM で PFN を評価する具体プロトコル（責任=ベイズ最適事後を物差しに・指標・有限文脈の注意・密度版）

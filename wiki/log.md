@@ -569,3 +569,56 @@
 - 概念粒度: **EM を独立概念ページに昇格**（MCMC と同格の汎用アルゴリズム。GMM はその適用先）。schema 上、EM は GMM の alias だったのを分離。
 - 固有の新規内容: **EM がなぜ機能するか＝下界(ELBO)最大化**。log p(y|θ)=F(q,θ)+KL(q‖p(z|y))、E-step で KL 最小化→q=真の事後、M-step で θ argmax。座標上昇・微分不要・vs SGD（map-reduce 並列）。**EM ⊂ VI**（E-step で q を真の事後に置ける場合の VI）の橋渡し。k-means は球状クラスタ仮定の EM 特別変種、HMM も応用。
 - PFN 接続メモ: EM＝MCMC/VI と並ぶ per-dataset 反復推論で PFN が償却。ELBO が EM↔VI の橋。EM の E-step が最小化する KL(q‖p(z|y)) と、PFN 原典の「損失＝事後予測への前向き KL 最小化」を「KL 最小化で事後(予測)に寄せる」共通言語として対比（per-dataset 反復 vs 事前訓練での償却）。
+
+## [2026-06-17] ingest | Understanding the EM Algorithm by Examples
+
+- 取り込み: `raw/articles/Understanding the EM Algorithm by Examples (with code and visualization).md`（Clarice Wang, Medium, 2022-07-31）。ケース C（Medium）。**EM/GMM 系 6本目**（EM を3実例で示す）。
+- 作成: [[sources/2022-em-by-examples]], [[translations/2022-em-by-examples]]
+- 更新: [[expectation-maximization]]（**「代表的な適用例」セクション新設＝GMM/k-means/Two Coins/HMM を同じ EM として統一、特に Two Coins 二項混合を追記**、source 追加）, [[sources/2019-em-algorithm-explained]]（相互リンク）, [[index]]
+- 翻訳範囲: 本文全体（MLE 導入〜K-Means〜Two Coins〜GMM〜結論）。**コードは Medium の gist 埋め込み（iframe）でクリップ markdown に含まれず割愛**（訳注を冒頭に明記）。**「Get … stories in your inbox」購読ウィジェット除外**。
+- 画像（ケース C・**全図21枚ローカル保存**）: `raw/assets/2022-em-by-examples/`（MLE/μ/σ 数式・身長/3000点ヒストグラム・EM プロセス図・K-Means 3反復・**Two Coins 尤度/重み数式と15反復表**・GMM pdf/更新式/3反復 等）。miro.medium の `format:webp/` 除去＋`set -f` で絶対パス DL。**装飾カバー（砂のハート＋サイコロの collage）は rule 3 で除外・削除**。Two Coins の数式は Read で確認し figcaption に転記（p(D|θ_A)=(0.8)⁸(0.2)²=0.00671 等）。妥当 PNG・参照数＝保存数(21)一致。取得失敗なし。
+- **重複の扱い**: EM 概念ページ＋GMM 3本＋EM 1本と大きく重複。固有の補完は **Two Coins（二項/ベルヌーイ混合）例＝EM がガウス以外でも動く最有名教育例**と、**K-Means/Two-Coins/GMM を同じ EM プロセスとして統一**する視点。source 冒頭で重複を明記し、概念ページには Two Coins と統一視点のみ新規追記。
+- PFN 接続メモ: Two Coins の重み＝事後確率＝ソフト割り当て。既知モデルの事後（ガウスでなくコイン/二項でも）が解析的に出る＝PFN 評価の物差し（Beta–Bernoulli, [[questions/pfn-bayesian-inference-evaluation-settings]]）と地続き。EM の per-dataset 反復を PFN が償却、はどの問題形でも成立。
+
+## [2026-06-17] query | MCMC を数式の気持ちで直感解説
+
+- 質問: 2019-conceptual-intro-mcmc の数式が難解。各式のイメージを説明し MCMC を分かりやすく解説し直してほしい。
+- 参照: [[sources/2019-conceptual-intro-mcmc]], [[sources/2021-mcmc-explained]], [[sources/2021-transformers-can-do-bayesian-inference]], [[markov-chain-monte-carlo]], [[bayesian-inference]]
+- 作成: [[questions/mcmc-intuitive-explainer]]
+- 更新: [[index]]
+- メモ: Speagle 論文の流れ（事後上の平均→グリッド→ESS→収束/一貫性→モンテカルロ→重点サンプリング→MCMC=散歩者→自己相関 τ→次元の呪い/typical set）を、数式最小＋たとえ（方眼紙・乱点で面積・山の地形を歩く散歩者・かさ増し除去・オレンジの皮）で噛み砕き。PFN 接続（per-dataset の散歩を順伝播1回に償却、NUTS 比1000〜10000倍速）も明記。GP 版 [[questions/gaussian-process-intuitive-explainer]] と同じ「数式控えめ・図で直感」路線の姉妹。
+
+## [2026-06-17] query | 既知 GMM で PFN を評価する具体プロトコル
+
+- 質問: 既知ガウス混合モデル（GMM）で PFN のベイズ推論精度をどう評価するか、具体的に。
+- 参照: [[questions/pfn-bayesian-inference-evaluation-settings]], [[questions/evaluating-pfn-gp-approximation]], [[gaussian-mixture-model]], [[expectation-maximization]], [[sources/2021-transformers-can-do-bayesian-inference]], [[sources/2020-gmm-overview]], [[sources/2024-gmm-em-clustering]]
+- 作成: [[questions/evaluating-pfn-with-known-gmm]]
+- 更新: [[index]], [[questions/pfn-bayesian-inference-evaluation-settings]]（(B) 節末尾に詳細版へのリンク追記）
+- メモ: 親ページ (B) の実行可能な詳細版。責任 r_ik＝ベイズ最適クラス事後が閉形式で出る根拠 → 7手順（既知 GMM 定義・重なりを作る理由・ラベル付き生成・物差し計算・PFN 実行・KL/TV/較正/Brier+Bayes誤り率床・条件振り）→ 2モード（既製 TabPFN 較正チェック / GMM 事前で PFN 訓練）→ 有限文脈の注意（責任=n→∞ベイズ最適、PFN は有限文脈で控えめ・n とともに収束）→ GP との違い（GP=有限データの厳密 PPD 物差し vs GMM=n→∞ベイズ最適分類事後）→ 密度推定版（教師なし、TabPFN v2）→ KL を主指標にする理論的根拠（損失=前向き KL）。
+
+## [2026-06-17] ingest | The No-U-Turn Sampler (NUTS 原典)
+
+- 取り込み: `raw/articles/The No-U-Turn Sampler_ Adaptively Setting Path Lengths in Hamiltonian Monte Carlo.md`（Hoffman & Gelman, arXiv 1111.4246 / JMLR 2014, ar5iv 版）。**ケース A（arXiv/ar5iv）**。HMC/NUTS の原典＝MCMC 系で最も理論的な一次資料。
+- 作成: [[sources/2014-no-u-turn-sampler]], [[translations/2014-no-u-turn-sampler]]
+- 更新: [[markov-chain-monte-carlo]]（**「HMC と NUTS」セクション新設**＝運動量/リープフロッグ/U ターン基準/二分木 doubling/双対平均化/turnkey/Stan。source 追加、aliases に Hamiltonian Monte Carlo/leapfrog/dual averaging/Stan、改良版 bullet を下節参照に）, [[sources/2021-transformers-can-do-bayesian-inference]]（NUTS の原典＝比較相手として相互リンク）, [[sources/2019-conceptual-intro-mcmc]]（高次元の問題への勾配ベース解として相互リンク）, [[questions/pfn-bayesian-inference-evaluation-settings]]（(E) NUTS 原典へリンク）, [[index]]
+- 翻訳範囲: **本文 §1〜§5 全訳＋アルゴリズム1〜6**（擬似コードは制御語のみ和訳・数式は保持、Alg2 は要点・Alg3/5/6 は要点に圧縮）。**付録 A（ESS 推定）・参考文献・謝辞は除外**（log に明記）。数式は ar5iv の clean LaTeX を採用。
+- 画像（ケース A・全図12枚）: `raw/assets/2014-no-u-turn-sampler/`（x1〜x12）を ar5iv から DL。**clip では一部の図リンクが欠落していたため x1〜x12 を全て probe して取得**。Read で内容を確認し図番号を確定: **x1=図1（二分木 doubling）、x2=図2（NUTS 軌跡例）、x3〜x6=図3 の4パネル（h−δ: MVN/LR/HLR/SV）、x7=図4（ε 収束）、x8=図5（軌跡長ヒスト）、x9〜x12=図6 の4パネル（ESS/勾配 効率: MVN/LR/HLR/SV）**。**図7（RWM/Gibbs/NUTS 比較）は ar5iv に画像が無く本文記述で代替**（訳注明記）。全12枚妥当 PNG・参照数＝保存数一致。取得失敗なし。
+- 概念粒度: 新概念ページは作らず [[markov-chain-monte-carlo]] に HMC/NUTS を統合（個別手法は上位概念に統合の規律）。
+- PFN 接続メモ: **これが PFN 原典の速度比較相手 NUTS そのもの**（GP-hyperprior 1000〜8000倍、BNN 10000倍）。NUTS＝最良の per-dataset ベイズ推論（Stan 中核・turnkey）を PFN が順伝播1回に償却。NUTS の「手調整ゼロ turnkey」と PFN の「per-dataset 学習ゼロ・即時」を自動ベイズ推論の2到達点として対比。評価の「収束 NUTS を物差しに」の NUTS が本論文。
+
+## [2026-06-17] ingest | A Conceptual Introduction to Hamiltonian Monte Carlo（Betancourt 2017）
+
+- 取り込み: `raw/articles/A Conceptual Introduction to Hamiltonian Monte Carlo.md`（arXiv:1701.02434）
+- 作成: [[sources/2017-conceptual-intro-hmc]], [[translations/2017-conceptual-intro-hmc]]
+- 更新: [[concepts/markov-chain-monte-carlo]]（frontmatter sources 追加・「HMC の幾何学的基礎」節を新設・関連ページ1行）, [[index]]（Sources article/tutorial＋Translations 各1行）
+- メモ: **ユーザー指示により付録 A（A.1–A.5）も本文と同じ方針で一文ずつ翻訳**（謝辞・参考文献は除外）。図は「全図ラスタライズ（最も忠実）」方針。
+- 図の取得: ar5iv の .eps はすべて「NO IMAGE AVAILABLE」プレースホルダ（同一 md5）だったため、**arXiv ソース tarball（`arxiv.org/e-print/1701.02434`）の PDF を Ghostscript で PNG 化**して復旧。多パネル図（図7/9/24/25/32）は ar5iv markdown が先頭パネルのみ保持していたため、tarball から (b)(c) パネルも変換して補完。インライン SVG 18 枚は headless Chrome（`--force-device-scale-factor=3`）でラスタライズ。クリップ片（earth/satellite/typical_set_perspective/satellite_crashed の各スプライト）は合成済み図ではなく部品のため除外。**最終 43 枚すべて翻訳から参照・壊れリンク 0 を検証**。保存先 `raw/assets/2017-conceptual-intro-hmc/`。
+- 原 markdown に画像が無い概念図（図1,4,5,6,8,10,11,14,15,35,37 の計11枚）は、訳注付きでキャプションのみ訳出。
+
+## [2026-06-17] query | HMC と NUTS を数式の気持ちで直感解説
+
+- 問い: HMC と NUTS を数式の気持ちを噛み砕いて直感的に解説してほしい
+- 参照: [[sources/2017-conceptual-intro-hmc]], [[sources/2014-no-u-turn-sampler]], [[markov-chain-monte-carlo]], [[questions/mcmc-intuitive-explainer]]（前編・文体踏襲）
+- 作成: [[questions/hmc-nuts-intuitive-explainer]]（惑星と衛星/転がるボール/H=V+K/リープフロッグのシーソー/exp(-ΔH)/Uターン基準/ダブリング/双対平均化=温度調節/E-BFMI・発散の診断。図20・21を再掲）
+- 更新: [[index]]（Questions に1行）
+- メモ: mcmc-intuitive-explainer（typical set で終わる前編）の続編として、勾配で殻に沿って滑走する HMC → 軌道長/ステップ幅を自動化する NUTS、を同じ「数式最小・たとえ重視」路線で。PFN 接続（per-dataset 反復を償却・NUTS 比 1000〜10000 倍速）で締め。

@@ -9,6 +9,7 @@ related:
   - "[[prior-data-fitted-networks]]"
 sources:
   - "[[sources/2019-em-algorithm-explained]]"
+  - "[[sources/2022-em-by-examples]]"
   - "[[sources/2020-gmm-overview]]"
   - "[[sources/2024-gmm-em-clustering]]"
 updated: 2026-06-17
@@ -44,6 +45,15 @@ E↔M を繰り返すと対数尤度の**局所最大**へ単調に登る（各�
 - **vs (S)GD**: SGD は目的関数の微分可能性を要し、大規模データでは GPU が要る。EM は map-reduce で並列化しやすい（マッパー＝E-step、リデューサー＝M-step）。
 - **限界**: 初期値依存で**局所最適**に収束する。
 
+## 代表的な適用例（同じ EM の別の顔）
+
+見かけの違う問題が、すべて「E-step（潜在の事後で割り当て）↔ M-step（MLE で更新）」という同じ EM に帰着する（[[sources/2022-em-by-examples]]）:
+
+- **GMM（ガウス混合）**: 潜在＝所属成分。E-step が責任 $r_{nk}$、M-step が $\mu_k,\Sigma_k,\pi_k$ を更新（[[gaussian-mixture-model]]）。
+- **k-means**: GMM で**共分散を球状・割り当てをハード**にした特別な変種。E-step＝最近傍重心へ割り当て、M-step＝重心を平均に。
+- **Two Coins（二項混合）**: 表確率の異なる2枚のコインを毎回ランダムに選んで投げる。潜在＝どのコインか。E-step＝各試行をベルヌーイ尤度の比で各コインへ**分数的にソフト割り当て**（例: 表8回の試行で $p(\text{A}\mid D)=0.564$ なら $0.564\times8$ 枚をコイン A に帰属）、M-step＝帰属した表/裏の割合で確率を更新。**EM がガウス以外（ベルヌーイ/二項）でも同じ形で動く**ことを示す最も有名な教育例。
+- **HMM（隠れマルコフモデル）**: 潜在＝隠れ状態系列（Baum–Welch ＝ HMM の EM）。
+
 ## VI（変分推論）との関係
 
 下界 $F(q,\theta)$ は **ELBO** であり、これは**変分推論（Variational Inference, VI）**が最大化するものと同じ。EM は「E-step で $q$ を**真の事後 $p(z\mid y,\theta)$ そのもの**に置ける（事後が解ける）場合の VI」と見なせる。事後が解けないときは、$q$ を扱いやすいパラメータ族に制限して ELBO を最大化する＝VI になる。つまり **EM ⊂ VI**（の特別な場合）。VI は MCMC（[[markov-chain-monte-carlo]]）と並ぶ**近似推論**の二大手法で、EM/ELBO はその橋渡しにある（[[bayesian-inference]]）。
@@ -61,5 +71,6 @@ E↔M を繰り返すと対数尤度の**局所最大**へ単調に登る（各�
 - [[markov-chain-monte-carlo]] — EM/VI と並ぶ近似推論（サンプリング側）
 - [[prior-data-fitted-networks]] — per-dataset の反復推論（EM 含む）を順伝播1回に償却
 - [[sources/2019-em-algorithm-explained]] — EM の理論（下界・Jensen・KL・座標上昇）の入門（本概念の一次資料）
+- [[sources/2022-em-by-examples]] — EM の3実例（K-Means・Two Coins 二項混合・GMM）で統一的に示す
 - [[sources/2020-gmm-overview]] — GMM の文脈での EM 導出
 - [[questions/pfn-bayesian-inference-evaluation-settings]] — 既知モデルの事後（E-step 出力）を PFN 精度の物差しに
