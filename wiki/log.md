@@ -491,3 +491,81 @@
 - 画像（ケース A・全図 DL 必須・15枚）: `raw/assets/2019-conceptual-intro-mcmc/` に ar5iv assets から取得（絶対パス DL）。**図番号で保存（figure-01〜figure-15）。ソース名と図番号が食い違う2件に注意: Figure 9 ← fig10.png、Figure 10 ← fig9.png**（Read で内容確認済み: figure-09=MH accept/reject、figure-10=自己相関）。全15枚 `file` で妥当 PNG・参照数＝保存数一致。取得失敗なし。
 - 概念粒度: 新概念ページは作らず既存 [[bayesian-inference]] に統合（近似推論の厳密資料。schema 規律）。
 - PFN 接続メモ: §3.3 の事後予測 P(D̃|D)=∫P(D̃|Θ)P(Θ|D)dΘ＝PFN の近似ターゲット PPD。核心命題「欲しいのは事後そのものでなく事後上の積分（期待値）」＝PFN が順伝播で出す量。次元の呪い・typical set（事後質量が半径√dσ の薄い殻に集中）・自己相関が per-dataset MCMC を高コストにする＝PFN が事前訓練に償却して回避する相手。PFN 原典の比較相手 NUTS（HMC ベース MCMC）の内部メカニズム（なぜ遅いか）を与える。[[sources/2021-mcmc-explained]] の厳密版。
+
+## [2026-06-17] concept | markov-chain-monte-carlo（MCMC 概念ページ新設）
+
+- 作成: [[markov-chain-monte-carlo]] — ユーザー依頼で MCMC の概念ページを新設（gaussian-process / bayesian-optimization と同格の抽象概念ページ。これまで [[bayesian-inference]] に統合していた MCMC を独立ページ化）。
+- 内容: 一言まとめ / 仕組み（モンテカルロ＋マルコフ連鎖＋定常分布＋詳細釣り合い＋Metropolis–Hastings）/ なぜ必要か（PPD・期待値・証拠 Z の計算困難性）/ 限界（burn-in・ESS/自己相関・多峰・次元の呪い/typical set・HMC/NUTS）/ PFN との接続（MCMC＝PFN が償却で置換／PFN 原典の NUTS ベンチ 1000〜10000倍速／評価の物差し）。
+- 更新: [[index]]（Concepts に1行＋略称リダイレクト MCMC/Metropolis-Hastings/HMC/NUTS/詳細釣り合い/typical set/重点サンプリング→markov-chain-monte-carlo）, [[bayesian-inference]]（related＋関連ページに追加）, [[sources/2021-mcmc-explained]]・[[sources/2019-conceptual-intro-mcmc]]（関連ページ先頭に概念ページを追加）。
+- sources（概念ページ frontmatter）: 2021-mcmc-explained / 2019-conceptual-intro-mcmc / 2020-understanding-bayesian-inference / 2021-transformers-can-do-bayesian-inference。
+
+## [2026-06-17] query | 事後分布と事後予測分布の違い
+
+- 質問: 事後分布と事後予測分布の違いがわからない、わかりやすく説明を。
+- 参照: [[bayesian-inference]], [[markov-chain-monte-carlo]], [[prior-data-fitted-networks]], [[sources/2024-bayesian-inference-step-by-step]], [[sources/2020-understanding-bayesian-inference]], [[sources/2019-conceptual-intro-mcmc]]
+- 作成: [[questions/posterior-vs-posterior-predictive]]
+- 更新: [[index]]
+- メモ: 事後分布＝パラメータ θ の分布／事後予測分布(PPD)＝θ を周辺化した新規観測 y* の分布。PPD=∫P(y*|x*,θ)P(θ|D)dθ＝事後で重みづけした予測の混合。比較表＋コイン投げ(Beta(8,4)→次が表 8/12)＋温度測定(PPD は観測ノイズ分だけ必ず広がる)の例。PFN は事後を明示的に作らず PPD を順伝播で直接償却、という接続を明示。
+
+## [2026-06-17] ingest | A simple introduction to Markov Chain Monte–Carlo sampling
+
+- 取り込み: `raw/articles/A simple introduction to Markov Chain Monte–Carlo sampling.md`（van Ravenzwaaij, Cassey, Brown, Psychonomic Bulletin & Review 2018, PMC5862921）。**ケース C（PMC/非 arXiv）**。認知科学者向けの初学者フレンドリーな MCMC チュートリアル。MCMC 三部作の3本目（応用・実務）。
+- 作成: [[sources/2018-mcmc-simple-introduction]], [[translations/2018-mcmc-simple-introduction]]
+- 更新: [[markov-chain-monte-carlo]]（**Gibbs サンプリングを仕組みに追記・R-hat/複数チェーン/blocking/DE を限界に追記**、source 追加、aliases に Gibbs/R-hat/blocking、source-pointer blockquote 追加）, [[sources/2021-mcmc-explained]]・[[sources/2019-conceptual-intro-mcmc]]（相互リンク）, [[index]]
+- 翻訳範囲: **本文（Abstract〜Summary）＋ Glossary（用語集）を全訳**。**付録 A/B/C（R コード）・References・Footnotes は除外**（appendix/references 扱い）。**clipper が壊した Eq.1（ベイズ則）を本文の定義から復元** `p(μ|D)∝p(D|μ)p(μ)`。**DE の γ 推奨式は元クリップで欠落していたため捏造せず欠落のまま忠実に訳出**（標準は γ=2.38/√(2K)）。
+- 画像（ケース C・本文の3図）: `raw/assets/2018-mcmc-simple-introduction/`（fig1-chain-convergence / fig2-gibbs / fig3-de-crossover）を cdn.ncbi.nlm.nih.gov から絶対パス DL。全て妥当 JPEG・参照数＝保存数(3)一致。Read で内容確認。**付録の R コード画像（Figa/Figb/Figc）は付録扱いで除外**。取得失敗なし。twiecki の MCMC 可視化ブログは参照リンクとして source に記載（画像 DL せず）。
+- 概念粒度: 新概念ページは作らず [[markov-chain-monte-carlo]] を拡充（Gibbs/R-hat/blocking が wiki 初出）。
+- PFN 接続メモ: MCMC＝PFN が償却で置換する近似推論。本稿は特に **per-dataset の運用負荷**（提案チューニング・棄却率・burn-in の事後的判断・収束診断・相関対策 blocking/Gibbs/DE）を具体化し、PFN がそれを順伝播1回で消す意義を際立たせる。相関した高次元事後＝PFN の償却が効く難所。MCMC 三部作 informal↔厳密↔応用 を補完。
+
+## [2026-06-17] ingest | Understanding the basics of MCMC Methods
+
+- 取り込み: `raw/articles/Understanding the basics of Markov Chain Monte Carlo (MCMC) Methods.md`（Sarowar Ahmed, Medium, 2024-06-23）。ケース C（Medium）。**非常に軽量な MCMC 超入門**。MCMC 4本目。
+- 作成: [[sources/2024-mcmc-basics-pymc3]], [[translations/2024-mcmc-basics-pymc3]]
+- 更新: [[markov-chain-monte-carlo]]（source 追加＋「実務は PyMC/Stan に任せる＝償却版 PPL との対比」を限界に1文・関連ページ追加）, [[sources/2018-mcmc-simple-introduction]]（相互リンク）, [[index]]
+- 翻訳範囲: 本文全体（What is MCMC / Real-Life Example / Scenario / Steps / Sample Data / Python Code / Explanation / Conclusion / Why does these matters）。**PyMC3 の Python コードブロックは原文保持**。**「Get … stories in your inbox」購読ウィジェット・末尾の LinkedIn/GitHub フォロー誘導は除外**。
+- 画像（ケース C・1図）: `raw/assets/2024-mcmc-basics-pymc3/01-mcmc-height-illustration.png`（miro.medium の `format:webp/` を外して原 PNG を絶対パス DL）。内容＝標準モンテカルロ（独立抽出）vs MCMC（相関抽出）の対比図。妥当 PNG・参照数＝保存数(1)一致。取得失敗なし。
+- 概念粒度: 新概念ページは作らず [[markov-chain-monte-carlo]] に「確率的プログラミング（PyMC）＋NUTS で実際に回す」観点を追記。
+- 固有価値メモ: 概念は既存3本と重複だが、**PyMC3 で NUTS を回す実コード（身長→μ・σ の事後推定）**という実践・ツーリング層が固有の補完。
+- PFN 接続メモ: ここで NUTS が回す「per-dataset の事後サンプリング」＝PFN が順伝播1回に償却する手作業。NUTS＝PFN 原典の速度比較相手（1000〜10000倍速）。PPL（事前×尤度を書けばサンプラーが事後を出す）↔ PFN（事前＝データ生成器を書けば順伝播が事後予測を出す＝償却版 PPL）の対比を明示。
+
+## [2026-06-17] ingest | Gaussian Mixture Models Explained (GMM & EM)
+
+- 取り込み: `raw/articles/Gaussian Mixture Models Explained_ Applying GMM and EM for Effective Data Clustering.md`（Tejas Pawar, Medium, 2024-05-08）。ケース C（Medium）。GMM と EM によるクラスタリングの実装入門。**MCMC 系列とは別の新トピック**。
+- 作成: [[sources/2024-gmm-em-clustering]], [[translations/2024-gmm-em-clustering]], **[[gaussian-mixture-model]]（新概念ページ）**
+- 更新: [[bayesian-inference]]（related＋関連ページに GMM 追加：EM を MCMC/VI と並ぶ反復近似推論として）, [[gaussian-process]]（related＋「GMM と別物」注記）, [[questions/pfn-bayesian-inference-evaluation-settings]]（(B) 既知 GMM のベイズ最適事後＝E-step の責任、へリンク）, [[index]]
+- 翻訳範囲: 本文全体（Introduction〜Conclusion、全5セクション）。**Python コードブロック（データ生成・初期化・E-step・M-step・収束ループ）は原文保持**。**「Get … stories in your inbox」購読ウィジェット・末尾 Reference の関連記事リンクは除外**。
+- 画像（ケース C・**全図ローカル保存9枚**）: `raw/assets/2024-gmm-em-clustering/`（GMM vs K-means 2枚・3次元データ散布・E-step/M-step 数式画像2枚・反復1/10/25・収束40反復）。miro.medium の `format:webp/` を外して原 PNG を絶対パス DL（zsh の glob で `1*...` が展開されるため `set -f` で無効化）。全9枚妥当 PNG・参照数＝保存数一致。E-step/M-step の数式画像は Read で内容確認し figcaption に式を Unicode で転記、source 側で LaTeX に起こした。取得失敗なし。
+- 概念粒度: **新概念ページ `gaussian-mixture-model` を新設**（gaussian-process と同格の確率モデル概念。EM は当てはめアルゴリズムとして同ページに統合し個別ページは作らない）。
+- PFN 接続メモ: ①既知 GMM のクラスタ事後＝E-step の責任 rᵢ_c が解析的に出る＝[[questions/pfn-bayesian-inference-evaluation-settings]] の「分類のベイズ最適事後（物差し）」の中身 ②EM＝MCMC/VI と並ぶ per-dataset 反復近似推論で、PFN が順伝播1回に償却する相手 ③混合モデル＝密度推定/事前分布の素材。GMM と GP は名前が似るが別物（混合 vs 関数上分布）と明記。
+
+## [2026-06-17] ingest | Gaussian Mixture Models (GMM) Explained: A Complete Guide (sklearn)
+
+- 取り込み: `raw/articles/Gaussian Mixture Models (GMM) Explained_ A Complete Guide with Python Examples.md`（Lakhan Bukkawar, GoPenAI/Medium, 2025-03-18）。ケース C（Medium）。**GMM 2本目**。
+- 作成: [[sources/2025-gmm-sklearn-guide]], [[translations/2025-gmm-sklearn-guide]]
+- 更新: [[gaussian-mixture-model]]（**BIC/AIC による成分数 k の選択を追記**＝前回の穴を補完、sklearn 実装メモ、source 追加、aliases に BIC/AIC）, [[sources/2024-gmm-em-clustering]]（姉妹記事として相互リンク）, [[index]]
+- 翻訳範囲: 本文全体（Introduction〜Conclusion、全7セクション）。**sklearn の Python コード・GMM vs K-Means 比較表は保持**。**「Get … stories in your inbox」購読ウィジェット・§8 References（sklearn/Wikipedia リンク）は除外**。
+- 画像（ケース C・本文5図）: `raw/assets/2025-gmm-sklearn-guide/`（hard-vs-soft / GMM PDF 数式 / soft 割り当て / 顧客セグメンテーション / BIC スコア）を miro.medium の `format:webp/` 除去＋`set -f`（zsh glob 回避）で絶対パス DL。**装飾カバー（AI 生成バナー jpeg, 1024x1024）は rule 3 で除外**（DL 後に内容確認して削除）。PDF 数式は P(x)=Σπ_i N(x|μ_i,Σ_i) を figcaption に転記。妥当 PNG・参照数＝保存数(5)一致。取得失敗なし。
+- **重複の扱い**: 直前の [[sources/2024-gmm-em-clustering]] と概念が大きく重複。固有の補完は (1) scikit-learn 実装（前者はフルスクラッチ EM）、(2) BIC/AIC による成分数選択（前者が未扱いの穴）。source 冒頭で重複を正直に明記し、概念ページには (2) のみ新規追記。
+- PFN 接続メモ: 既知 GMM の predict_proba＝ベイズ最適クラス事後＝PFN 評価の物差し。EM＝per-dataset 反復推論で PFN が償却。BIC/AIC のモデル選択＝PFN が事前分布で周辺化して回避する手間、という対比を追加。
+
+## [2026-06-17] ingest | An overview of Gaussian Mixture Models
+
+- 取り込み: `raw/articles/An overview of Gaussian Mixture Models.md`（Massimiliano Patacchiola, 個人ブログ mpatacchiola.github.io, 2020-07-31。書籍 Mathematics for Machine Learning 第11章ベース）。ケース C（非 arXiv 個人ブログ）。**GMM 3本目＝最も理論的な厳密リファレンス**。
+- 作成: [[sources/2020-gmm-overview]], [[translations/2020-gmm-overview]]
+- 更新: [[gaussian-mixture-model]]（**潜在変数モデル/周辺化セクション新設・非識別可能性/鶏と卵/特異性を EM 節に追記**、source 追加）, [[sources/2024-gmm-em-clustering]]・[[sources/2025-gmm-sklearn-guide]]（姉妹記事として相互リンク）, [[index]]
+- 翻訳範囲: 本文全体（ガウス復習〜長所短所〜結論）。**numpy の Python コード（ML 当てはめ・EM 実装）保持**。**末尾 References・冒頭の書籍カバー画像は除外**（著者の gist コード/データへのリンクは本記事固有の内容なので地の文で保持）。**clipper が各数式を3重化（unicode 崩れ＋崩れ＋clean LaTeX）していたため、clean な `$$...$$` LaTeX を採用**。
+- 画像（ケース C・本文2図）: `raw/assets/2020-gmm-overview/`（01-weight-gaussian-fit＝体重ヒストグラム＋単一ガウス ML、02-nll-gmm-k2-k5＝NLL推移＋K=2/K=5 GMM）を mpatacchiola.github.io から絶対パス DL。**装飾の書籍カバー（MML 表紙）は rule 3 で除外・削除**。妥当 PNG・参照数＝保存数(2)一致。**数式画像は無し（本文 inline LaTeX）**。取得失敗なし。著者 gist（コード/データ）は参照リンクとして残す。
+- **GMM 三部作の位置づけ整理**: [[sources/2024-gmm-em-clustering]]＝フルスクラッチ実装、[[sources/2025-gmm-sklearn-guide]]＝sklearn＋BIC/AIC、本稿＝理論導出。
+- 固有の新規内容: **潜在変数モデル（z→x）と周辺化、責任=事後分布の明示、非識別可能性（label switching）→非凸尤度、鶏と卵→EM の動機、祖先サンプリング、特異性 σ→0、ガウス密度の和≠ガウス変数の和**。概念ページに反映。
+- PFN 接続メモ: 責任=事後が完全明示→既知 GMM のベイズ最適事後（PFN 評価の物差し）の中身が一層鮮明。潜在変数の周辺化＝事後予測の積分と同型で PFN が償却。多峰事後・非凸・鶏と卵＝EM が per-dataset 反復を要する理由＝PFN が消す相手。ガウスの周辺/条件付き性が GP/カルマンの土台（GMM≠GP）。
+
+## [2026-06-17] ingest | The EM Algorithm Explained
+
+- 取り込み: `raw/articles/The EM Algorithm Explained.md`（Chloe Bi, Medium, 2019-02-08）。ケース C（Medium）。**EM アルゴリズムそのもの**を主役にした理論寄り解説（GMM 3本は EM を GMM の手順として扱った）。
+- 作成: [[sources/2019-em-algorithm-explained]], [[translations/2019-em-algorithm-explained]], **[[expectation-maximization]]（新概念ページ）**
+- 更新: **[[gaussian-mixture-model]] を refactor**（EM 一般の aliases〔EM/Expectation-Maximization/期待値最大化〕を EM 概念ページへ移し、related・EM 節・関連ページから [[expectation-maximization]] を参照。GMM 固有の E/M-step 式は残置）, [[bayesian-inference]]（related＋関連ページに EM 追加）, [[markov-chain-monte-carlo]]（related に EM 追加）, [[index]]
+- 翻訳範囲: 本文全体（intro〜conclusion）。**「Get … stories in your inbox」購読ウィジェット・末尾 Useful Resources〔Rasmussen/Ng 講義ノート〕は除外**（後者は source に参考リンクとして記載）。
+- 画像（ケース C・**全図8枚ローカル保存**）: `raw/assets/2019-em-algorithm-explained/`（Wikipedia の EM 収束 GIF・式1-3/3-4/5/下界 recall/M-step argmax の数式画像4枚・Duke 収束図・Wikipedia 座標上昇図）。miro.medium の `format:webp/` 除去＋`set -f` で絶対パス DL。**数式画像は Read で内容確認し figcaption に式を転記、source/概念で LaTeX に起こした**（Eq1: p(z|y,θ)=p(y|z,θ)p(z|θ)/p(y|θ) … 下界 F(q,θ) と KL ギャップ）。GIF も保存（Wikipedia 出典）。妥当画像・参照数＝保存数(8)一致。取得失敗なし。
+- 概念粒度: **EM を独立概念ページに昇格**（MCMC と同格の汎用アルゴリズム。GMM はその適用先）。schema 上、EM は GMM の alias だったのを分離。
+- 固有の新規内容: **EM がなぜ機能するか＝下界(ELBO)最大化**。log p(y|θ)=F(q,θ)+KL(q‖p(z|y))、E-step で KL 最小化→q=真の事後、M-step で θ argmax。座標上昇・微分不要・vs SGD（map-reduce 並列）。**EM ⊂ VI**（E-step で q を真の事後に置ける場合の VI）の橋渡し。k-means は球状クラスタ仮定の EM 特別変種、HMM も応用。
+- PFN 接続メモ: EM＝MCMC/VI と並ぶ per-dataset 反復推論で PFN が償却。ELBO が EM↔VI の橋。EM の E-step が最小化する KL(q‖p(z|y)) と、PFN 原典の「損失＝事後予測への前向き KL 最小化」を「KL 最小化で事後(予測)に寄せる」共通言語として対比（per-dataset 反復 vs 事前訓練での償却）。

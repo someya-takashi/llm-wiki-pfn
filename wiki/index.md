@@ -40,6 +40,12 @@
 - [[sources/2020-understanding-bayesian-inference]] — ベイズ推論を機械学習パラダイムとして説く入門（Jonty Sinai 2020）。予測分布(PPD)＋近似推論(MCMC/VI/EP)まで到達。[[bayesian-inference]] の入門
 - [[sources/2021-mcmc-explained]] — MCMC の入門解説（Shivam Agrahari 2021, TDS）。モンテカルロ＋マルコフ連鎖→定常分布→詳細釣り合い→Metropolis–Hastings。[[bayesian-inference]] の近似推論を深掘り
 - [[sources/2019-conceptual-intro-mcmc]] — MCMC の概念的入門（Joshua Speagle 2019, arXiv 1909.12313）。グリッド→重点サンプリング→MCMC、ESS・自己相関・次元の呪い・typical set まで。[[bayesian-inference]] 近似推論の厳密版
+- [[sources/2018-mcmc-simple-introduction]] — MCMC の平易な入門（van Ravenzwaaij et al. 2018, Psychon Bull Rev）。Metropolis→Gibbs→DE、burn-in/R-hat/blocking と SDT 応用。[[markov-chain-monte-carlo]] の応用入門
+- [[sources/2024-mcmc-basics-pymc3]] — MCMC の超入門＋PyMC3/NUTS 実コード（Sarowar Ahmed 2024, Medium）。身長データで μ・σ の事後を推定。[[markov-chain-monte-carlo]] の実践レシピ
+- [[sources/2024-gmm-em-clustering]] — ガウス混合モデル（GMM）と EM の実装入門（Tejas Pawar 2024, Medium）。3次元データで E-step/M-step を反復しクラスタリング。[[gaussian-mixture-model]] の一次資料
+- [[sources/2025-gmm-sklearn-guide]] — GMM の sklearn 実装ガイド（Lakhan Bukkawar 2025, GoPenAI）。soft/hard 比較・顧客セグメンテーション・BIC/AIC で成分数選択。[[gaussian-mixture-model]] の実践版
+- [[sources/2020-gmm-overview]] — GMM の理論的概観（Patacchiola 2020, MML 第11章ベース）。潜在変数→責任=事後→非識別可能性→鶏と卵の EM 導出。[[gaussian-mixture-model]] の理論リファレンス
+- [[sources/2019-em-algorithm-explained]] — EM アルゴリズムの解説（Chloe Bi 2019, Medium）。下界=ELBO・Jensen・KL・座標上昇で「なぜ収束するか」。[[expectation-maximization]] の一次資料
 
 ## Translations
 
@@ -70,14 +76,23 @@
 - [[translations/2020-understanding-bayesian-inference]] — 「ベイズ推論を理解する」の全文翻訳（本文、図解8枚ローカル保存）
 - [[translations/2021-mcmc-explained]] — MCMC 解説記事の全文翻訳（本文＋Extras、図/数式21枚ローカル保存）
 - [[translations/2019-conceptual-intro-mcmc]] — MCMC 概念的入門論文の全文翻訳（本文§1〜9＋演習、図解15枚ローカル保存）
+- [[translations/2018-mcmc-simple-introduction]] — MCMC 平易入門の全文翻訳（本文＋用語集、図3枚ローカル保存）
+- [[translations/2024-mcmc-basics-pymc3]] — MCMC 超入門の全文翻訳（本文＋PyMC3 コード、図1枚ローカル保存）
+- [[translations/2024-gmm-em-clustering]] — GMM/EM クラスタリング記事の全文翻訳（本文＋Python 実装、図9枚ローカル保存）
+- [[translations/2025-gmm-sklearn-guide]] — GMM sklearn ガイドの全文翻訳（本文＋sklearn コード、図5枚ローカル保存）
+- [[translations/2020-gmm-overview]] — GMM 理論概観の全文翻訳（導出＋numpy 実装、図2枚ローカル保存）
+- [[translations/2019-em-algorithm-explained]] — EM 解説記事の全文翻訳（下界導出、図8枚ローカル保存）
 
 ## Concepts
 
 - [[prior-data-fitted-networks]] — 合成データで一度訓練し推論時にベイズ推論を償却近似する中核概念
 - [[in-context-learning]] — 重み更新なしに文脈から予測する枠組み
 - [[bayesian-inference]] — 近似対象である事後予測分布（PPD）と償却推論
+- [[markov-chain-monte-carlo]] — 事後分布から直接サンプルする近似推論の定番（PFN が償却で置換）
 - [[structural-causal-model]] — TabPFN の表形式事前分布の中核（因果 DAG による合成データ生成）
 - [[gaussian-process]] — PFN の検証ベンチマーク兼事前分布の素材となる古典的ベイズモデル
+- [[gaussian-mixture-model]] — ガウスの混合による確率的クラスタリング／密度推定。EM で当てはめ、既知 GMM は PFN 評価の物差し
+- [[expectation-maximization]] — 潜在変数モデルの MLE/MAP を E/M-step の反復で求める汎用アルゴリズム（下界=ELBO 最大化、VI の特別な場合）
 - [[tabular-foundation-model]] — 予測＋生成＋密度推定＋埋め込みを単一モデルで担う表形式基盤モデル（TabPFN v2）
 - [[bayesian-optimization]] — 高コスト関数を GP サロゲート＋獲得関数で大域最適化する手法。PFN/TFM の下流応用先
 
@@ -85,8 +100,11 @@
 - PFN → [[prior-data-fitted-networks]]
 - ICL → [[in-context-learning]]
 - PPD / 事後予測分布 → [[bayesian-inference]]
+- MCMC / Metropolis-Hastings / HMC / NUTS / 詳細釣り合い / typical set / 典型集合 / 重点サンプリング / Gibbs サンプリング / Metropolis-within-Gibbs / R-hat / Gelman–Rubin / blocking / 差分進化 / DE-MCMC / PyMC / 確率的プログラミング → [[markov-chain-monte-carlo]]
 - SCM → [[structural-causal-model]]
 - GP → [[gaussian-process]]
+- GMM / ガウス混合モデル / 混合モデル / ソフトクラスタリング / 責任 responsibility / BIC / AIC / 情報量規準 → [[gaussian-mixture-model]]
+- EM / 期待値最大化 / Expectation-Maximization / E-step / M-step / ELBO / 変分下界 / 座標上昇法 / coordinate ascent → [[expectation-maximization]]
 - BayesOpt / BO / EI / KG / 期待改善 / 知識勾配 / 獲得関数 → [[bayesian-optimization]]
 - TabPFN（v1/v2/2.5/3）/ TabPFN-3-Plus / Thinking → [[prior-data-fitted-networks]]（個別ページは作らず source に記載）
 - TFM / 表形式基盤モデル / テスト時計算 → [[tabular-foundation-model]]
@@ -109,3 +127,4 @@
 - [[questions/evaluating-pfn-gp-approximation]] — PFN の GP 近似を定量評価する指標（KL/平均・信頼幅RMSE/被覆率/CRPS）とプロトコル
 - [[questions/pfn-and-bayesian-optimization]] — PFN とベイズ最適化の関係（BO のサロゲートを GP→PFN に差し替える）初心者向け解説・図解
 - [[questions/pfn-bayesian-inference-evaluation-settings]] — PFN のベイズ推論精度を評価できる問題設定（GP以外の例＋共役/グリッド/SCM/MCMC で自前評価）
+- [[questions/posterior-vs-posterior-predictive]] — 事後分布と事後予測分布の違い（パラメータの分布 vs 次データの分布、比較表＋コイン/温度の例＋PFN接続）

@@ -5,6 +5,9 @@ tags: [probabilistic-modeling, amortized-inference]
 related:
   - "[[prior-data-fitted-networks]]"
   - "[[in-context-learning]]"
+  - "[[markov-chain-monte-carlo]]"
+  - "[[gaussian-mixture-model]]"
+  - "[[expectation-maximization]]"
 sources:
   - "[[sources/2021-transformers-can-do-bayesian-inference]]"
   - "[[sources/2022-tabpfn]]"
@@ -56,6 +59,9 @@ $$
 
 - [[prior-data-fitted-networks]] — PPD を償却近似する具体的枠組み
 - [[in-context-learning]] — 償却ベイズ推論としての解釈
+- [[markov-chain-monte-carlo]] — 事後を直接サンプルする近似推論の定番（PFN が償却で置換、PFN 原典の NUTS ベンチ）
+- [[gaussian-mixture-model]] — 潜在変数モデルの近似推論 EM（MCMC/VI と並ぶ反復推論）と、既知 GMM のベイズ最適事後
+- [[expectation-maximization]] — 潜在変数モデルの反復推論。下界=ELBO 最大化で VI/MCMC と同じ近似推論の一角
 - [[structural-causal-model]] — TabPFN が用いる事前分布 $p(\phi)$ の中身
 - [[sources/2022-tabpfn]]
 - [[sources/2025-causalpfn]] — 償却ベイズ推論を因果（CEPO-PPD）へ拡張、data-prior 損失＝前向き KL

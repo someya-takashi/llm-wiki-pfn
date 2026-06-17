@@ -6,6 +6,7 @@ related:
   - "[[bayesian-inference]]"
   - "[[prior-data-fitted-networks]]"
   - "[[bayesian-optimization]]"
+  - "[[gaussian-mixture-model]]"
 sources:
   - "[[sources/2019-gp-not-for-dummies]]"
   - "[[sources/2020-gp-regression-tutorial]]"
@@ -77,3 +78,4 @@ GP は「カーネルで関数の事前分布を表し、ベイズ推論で予�
 - [[questions/pfn-paper-and-gaussian-process]] — PFN 原典と GP の関係（物差し／事前分布／高速近似）
 - [[questions/tabpfn-tabicl-versions-mechanism]] — 各バージョンの TabPFN/TabICL が GP をどう扱うか
 - [[questions/evaluating-pfn-gp-approximation]] — PFN の GP 近似を定量評価する指標（KL・RMSE・被覆率・CRPS）
+- [[gaussian-mixture-model]] — 名前は似るが別物（GP＝関数上のガウス、GMM＝有限個のガウスの混合）

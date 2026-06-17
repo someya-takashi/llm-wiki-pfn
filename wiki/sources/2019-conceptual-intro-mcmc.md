@@ -86,9 +86,11 @@ translation: "[[translations/2019-conceptual-intro-mcmc]]"
 
 ## 関連ページ
 
+- [[markov-chain-monte-carlo]] — MCMC の概念ページ（本稿はその厳密・包括版の一次資料）
 - [[bayesian-inference]] — 事後・PPD・近似推論の概念ハブ。本稿は「事後上の積分」視点を精密化
 - [[prior-data-fitted-networks]] — MCMC の反復サンプリングを順伝播1回に償却する枠組み
 - [[sources/2021-mcmc-explained]] — 同じ MCMC の informal な入門。本稿はその厳密・包括版
+- [[sources/2018-mcmc-simple-introduction]] — MCMC の応用・実務寄り入門（Gibbs・DE・blocking・R-hat、SDT 応用）
 - [[sources/2020-understanding-bayesian-inference]] — 近似推論（MCMC/VI）を高レベルで導入した入門
 - [[sources/2021-transformers-can-do-bayesian-inference]] — PFN 原典。NUTS（MCMC）比 1000〜10000 倍速を実証
 - [[questions/pfn-bayesian-inference-evaluation-settings]] — 「収束 NUTS を物差しに」＝本稿の収束・一貫性・ESS が裏付け
