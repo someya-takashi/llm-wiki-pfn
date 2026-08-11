@@ -7,7 +7,9 @@ related:
   - "[[bayesian-inference]]"
   - "[[structural-causal-model]]"
   - "[[tabular-foundation-model]]"
+  - "[[permutation-invariant-neural-networks]]"
 sources:
+  - "[[sources/2018-set-transformer]]"
   - "[[sources/2021-transformers-can-do-bayesian-inference]]"
   - "[[sources/2022-tabpfn]]"
   - "[[sources/2025-tabpfn-v2]]"
@@ -22,7 +24,7 @@ sources:
   - "[[sources/2025-do-pfn]]"
   - "[[sources/2025-nanotabpfn]]"
   - "[[sources/2026-shappfn]]"
-updated: 2026-06-06
+updated: 2026-08-12
 ---
 
 # Prior-Data Fitted Networks（PFN）
@@ -55,7 +57,7 @@ $$
 
 ## アーキテクチャ上の特徴
 
-- データセットを **集合（set）** として入力する。各 (特徴量, ラベル) ペアを 1 トークンにし、トークン同士がアテンションで注意を向け合う。サンプルの順序に依存しない（順序不変, permutation invariant）。
+- データセットを **集合（set）** として入力する。各 (特徴量, ラベル) ペアを 1 トークンにし、トークン同士がアテンションで注意を向け合う。サンプルの順序に依存しない（順序不変, permutation invariant）。この「アテンションによる置換不変な集合処理」の設計は [[permutation-invariant-neural-networks]]（代表手法: Set Transformer, [[sources/2018-set-transformer]]）の系譜にあり、後続の TabICL・TabPFN-3 では同論文由来の**誘導点（inducing points）**による $O(nm)$ 化も採用されている。
 - テスト点は訓練点に注意を向け、テスト集合全体の予測を **1 回の順伝播で同時に** 出す。勾配ベースの学習を推論時に一切行わない（ガウス過程の予測に近い構図）。
 - この「重み更新なしに文脈から学ぶ」挙動は、大規模言語モデルで観測される [[in-context-learning]]（文脈内学習）と同じ枠組みであり、PFN はそれを **設計された事前分布のもとで意図的に行う** 点が特徴。
 
@@ -94,6 +96,7 @@ $$
 
 - [[in-context-learning]] — PFN の推論挙動の一般枠組み
 - [[bayesian-inference]] — 近似対象（PPD）の理論的背景
+- [[permutation-invariant-neural-networks]] — 「データセット＝集合」入力を支えるアーキテクチャの系譜（Set Transformer / 誘導点）
 - [[structural-causal-model]] — TabPFN の事前分布の中核
 - [[sources/2022-tabpfn]] — TabPFN 論文
 - [[questions/pfn-paper-and-gaussian-process]] — PFN 原典と GP の関係・出力の仕組み・カーネル/ハイパラの扱い

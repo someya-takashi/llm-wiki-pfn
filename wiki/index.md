@@ -10,6 +10,7 @@
 
 ### paper
 
+- [[sources/2018-set-transformer]] — Set Transformer: アテンションに基づく置換不変 NN（Lee et al. 2018, ICML 2019）。SAB/ISAB（誘導点）/PMA で集合を順序不変に処理。PFN 系「データセット＝集合」設計の原点、TabICL が直接採用
 - [[sources/2021-transformers-can-do-bayesian-inference]] — Transformers Can Do Bayesian Inference: PFN の枠組みを提示した原典（Müller et al. 2021, ICLR 2022）
 - [[sources/2022-tabpfn]] — TabPFN v1: 小規模表形式分類を 1 秒で解く Transformer（Hollmann et al. 2022, ICLR 2023）
 - [[sources/2025-tabpfn-v2]] — TabPFN v2: 表形式基盤モデルによる小規模データでの正確な予測（Hollmann et al. 2025, Nature）
@@ -52,6 +53,7 @@
 
 ## Translations
 
+- [[translations/2018-set-transformer]] — Set Transformer 論文の全文翻訳（Abstract〜§6、図11枚ローカル保存、補足資料は対象外）
 - [[translations/2021-transformers-can-do-bayesian-inference]] — PFN 原典の全文翻訳（本文＋付録 A〜H）
 - [[translations/2022-tabpfn]] — TabPFN v1 論文の全文翻訳（本文＋付録 A〜F）
 - [[translations/2025-tabpfn-v2]] — TabPFN v2 論文の翻訳（Main＋Methods）
@@ -101,6 +103,7 @@
 - [[expectation-maximization]] — 潜在変数モデルの MLE/MAP を E/M-step の反復で求める汎用アルゴリズム（下界=ELBO 最大化、VI の特別な場合）
 - [[tabular-foundation-model]] — 予測＋生成＋密度推定＋埋め込みを単一モデルで担う表形式基盤モデル（TabPFN v2）
 - [[bayesian-optimization]] — 高コスト関数を GP サロゲート＋獲得関数で大域最適化する手法。PFN/TFM の下流応用先
+- [[permutation-invariant-neural-networks]] — 集合を順序不変に処理する NN の系譜（DeepSets → Set Transformer → PFN 系）。PFN の「データセット＝集合」入力の土台
 
 略称リダイレクト（正式名称ページに集約）:
 - PFN → [[prior-data-fitted-networks]]
@@ -112,6 +115,7 @@
 - GMM / ガウス混合モデル / 混合モデル / ソフトクラスタリング / 責任 responsibility / BIC / AIC / 情報量規準 → [[gaussian-mixture-model]]
 - EM / 期待値最大化 / Expectation-Maximization / E-step / M-step / ELBO / 変分下界 / 座標上昇法 / coordinate ascent → [[expectation-maximization]]
 - BayesOpt / BO / EI / KG / 期待改善 / 知識勾配 / 獲得関数 → [[bayesian-optimization]]
+- Set Transformer / DeepSets / set pooling / SAB / ISAB / PMA / 誘導点 inducing points / 置換不変 permutation invariance → [[permutation-invariant-neural-networks]]（Set Transformer 論文は [[sources/2018-set-transformer]]）
 - TabPFN（v1/v2/2.5/3）/ TabPFN-3-Plus / Thinking → [[prior-data-fitted-networks]]（個別ページは作らず source に記載）
 - TFM / 表形式基盤モデル / テスト時計算 → [[tabular-foundation-model]]
 - TabICL / TabICLv2 / QASSMax → [[sources/2025-tabicl]] ・ [[sources/2026-tabicl-v2]]（別系統 TFM。概念は [[tabular-foundation-model]] / [[prior-data-fitted-networks]] / [[in-context-learning]]）

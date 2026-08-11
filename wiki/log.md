@@ -622,3 +622,10 @@
 - 作成: [[questions/hmc-nuts-intuitive-explainer]]（惑星と衛星/転がるボール/H=V+K/リープフロッグのシーソー/exp(-ΔH)/Uターン基準/ダブリング/双対平均化=温度調節/E-BFMI・発散の診断。図20・21を再掲）
 - 更新: [[index]]（Questions に1行）
 - メモ: mcmc-intuitive-explainer（typical set で終わる前編）の続編として、勾配で殻に沿って滑走する HMC → 軌道長/ステップ幅を自動化する NUTS、を同じ「数式最小・たとえ重視」路線で。PFN 接続（per-dataset 反復を償却・NUTS 比 1000〜10000 倍速）で締め。
+
+## [2026-08-12] ingest | Set Transformer（Lee et al. 2018, ICML 2019）
+
+- 取り込み: `raw/articles/Set Transformer_ A Framework for Attention-based Permutation-Invariant Neural Networks.md`（arXiv:1810.00825, ar5iv クリップ）
+- 作成: [[sources/2018-set-transformer]], [[translations/2018-set-transformer]], [[concepts/permutation-invariant-neural-networks]]（新規概念: 置換不変 NN の系譜 DeepSets → Set Transformer → PFN 系）
+- 更新: [[concepts/prior-data-fitted-networks]]（related/sources・アーキテクチャ節に系譜リンク）, [[concepts/gaussian-process]]（誘導点→ISAB の関連1行）, [[sources/2025-tabicl]]（関連ページに原典リンク）, [[index]]（paper・Translations・Concepts・略称リダイレクト各1行）
+- メモ: 直前の query「Set Transformer 論文は wiki と関係あるか」への回答を受けてユーザーがクリップ→ingest。翻訳は Abstract〜§6（補足資料・謝辞・参考文献・ar5iv の ICML スタイル警告定型文は除外）。図: markdown には画像リンク2枚（omni20/celeba）のみで図1(4パネル)・図3・図4(4パネル)が欠落 → **arXiv ソース tarball の PDF を Ghostscript で PNG 化して復旧**（tex の includegraphics で図番号と対応付け: 図1=main/mab/fig_sab/imab, 図3=isab_n, 図4=ff/sab_ff/ff_sab/sab）。計11枚すべてローカル保存・参照済み。

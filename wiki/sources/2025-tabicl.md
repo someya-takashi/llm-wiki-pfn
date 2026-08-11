@@ -92,6 +92,7 @@ TabICL は **「ICL を大規模表データへスケールできる」ことを
 - [[in-context-learning]] — 推論メカニズム（3 段で大規模 ICL を効率化）
 - [[structural-causal-model]] — 合成事前分布（木ベース SCM・活性化多様化）
 - [[prior-data-fitted-networks]] — SCM 事前分布＋ICL を共有する PFN 流の兄弟
+- [[sources/2018-set-transformer]] — 列埋め込みに直接採用した Set Transformer / ISAB（誘導点）の原典
 - [[sources/2026-tabpfn-3]] — TabICLv2 の 3 段設計を採用した後続（TabPFN-3）
 - [[sources/2025-tabpfn-v2]] — 比較対象・スケール課題の出発点（TabPFNv2）
 - [[translations/2025-tabicl]] — 本文 §1〜6 ＋ 付録 A〜E の翻訳

@@ -71,6 +71,7 @@ GP は「カーネルで関数の事前分布を表し、ベイズ推論で予�
 - [[sources/2021-transformers-can-do-bayesian-inference]] — GP をベンチマークに PFN を検証した原典
 - [[sources/2022-tabpfn]] — GP ベースの分類事前分布（PFN-GP）
 - [[sources/2025-tabicl]] / [[sources/2026-tabicl-v2]] — GP 関数を合成 prior に使う TFM
+- [[sources/2018-set-transformer]] — スパース GP の誘導点法をアテンションに移植した ISAB（Set Transformer）。[[permutation-invariant-neural-networks]] 参照
 - [[bayesian-optimization]] — GP を最も多用する応用領域（GP をサロゲートに使う）
 - [[sources/2018-bayesian-optimization-tutorial]] — GP をサロゲートに使う BayesOpt のチュートリアル
 - [[sources/2023-pfns4bo]] — PFN を GP の置換として BO に据え、固定 GP 事後を再現した論文
